@@ -179,30 +179,27 @@ Public Class Form1
 
         ' Set the font size for the main display based on the width of the client rectangle
         Dim FontSize As Integer = ClientSize.Width \ 14
-
         MainDisplay.font = New Font("Segoe UI", FontSize, FontStyle.Regular)
 
         ' Center the main display in the client rectangle.
         MainDisplay.location.X = ClientSize.Width \ 2
         MainDisplay.location.Y = (ClientSize.Height + MenuStrip1.Height) \ 2
 
-        FontSize = ClientSize.Width \ 39
-
+        ' Set the font size for the top display based on the width of the client rectangle
+        FontSize = ClientSize.Width \ 41
         TopDisplay.font = New Font("Segoe UI", FontSize, FontStyle.Regular)
 
-
+        ' Center the top display in the client rectangle above the main display.
         TopDisplay.location.X = ClientSize.Width \ 2
         TopDisplay.location.Y = (ClientSize.Height + MenuStrip1.Height) \ 2 - ClientSize.Width \ 10
 
-
-        FontSize = ClientSize.Width \ 39
-
+        ' Set the font size for the bottom display based on the width of the client rectangle
+        'FontSize = ClientSize.Width \ 39
         BottomDisplay.font = New Font("Segoe UI", FontSize, FontStyle.Regular)
 
-
+        ' Center the bottom display in the client rectangle below the main display.
         BottomDisplay.location.X = ClientSize.Width \ 2
         BottomDisplay.location.Y = (ClientSize.Height + MenuStrip1.Height) \ 2 + ClientSize.Width \ 10
-
 
         ' Dispose of the existing buffer
         If Buffer IsNot Nothing Then
@@ -238,17 +235,7 @@ Public Class Form1
 
             Try
 
-                'Using font As New Font("Segoe UI", TimeFontSize, FontStyle.Regular)
-
-                'Dim DisplayText As New String(Now.ToLocalTime.ToShortTimeString() & Environment.NewLine & Now.ToLocalTime.DayOfWeek.ToString())
-                'Dim DisplayText As New String(Now.ToLocalTime.ToShortTimeString())
-
-
                 With Buffer.Graphics
-
-                    '.CompositingMode = Drawing2D.CompositingMode.SourceCopy
-                    '.SmoothingMode = Drawing2D.SmoothingMode.None
-                    '.PixelOffsetMode = Drawing2D.PixelOffsetMode.None
 
                     .Clear(Color.Black)
 
@@ -258,20 +245,13 @@ Public Class Form1
                     .PixelOffsetMode = Drawing2D.PixelOffsetMode.None
                     .CompositingQuality = Drawing2D.CompositingQuality.HighQuality
 
-
-
                     .DrawString(MainDisplay.text, MainDisplay.font, Brushes.White, MainDisplay.location, AlineCenterMiddle)
 
                     .DrawString(TopDisplay.text, TopDisplay.font, Brushes.LightGray, TopDisplay.location, AlineCenterMiddle)
 
                     .DrawString(BottomDisplay.text, BottomDisplay.font, Brushes.LightGray, BottomDisplay.location, AlineCenterMiddle)
 
-
-                    '.FillRectangle(Brushes.Blue, MainDisplay.location.X, MainDisplay.location.Y, 25, 25)
-
                 End With
-
-                'End Using
 
             Catch ex As Exception
 
