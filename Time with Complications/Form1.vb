@@ -128,6 +128,10 @@ Public Class Form1
 
                 TopDisplay.text = Now.ToLongDateString
 
+            Case InfoType.MedDate
+
+                TopDisplay.text = Now.ToString("MMMM d, yyyy")
+
         End Select
 
 
@@ -343,6 +347,9 @@ Public Class Form1
 
         If TopLongDateMenuItem.Checked Then TopLongDateMenuItem.Checked = False
 
+        If TopMedDateMenuItem.Checked Then TopMedDateMenuItem.Checked = False
+
+
     End Sub
 
     Private Sub TopShortDayMenuItem_Click(sender As Object, e As EventArgs) Handles TopShortDayMenuItem.Click
@@ -355,6 +362,8 @@ Public Class Form1
         If TopDayMenuItem.Checked Then TopDayMenuItem.Checked = False
 
         If TopLongDateMenuItem.Checked Then TopLongDateMenuItem.Checked = False
+
+        If TopMedDateMenuItem.Checked Then TopMedDateMenuItem.Checked = False
 
     End Sub
 
@@ -370,17 +379,29 @@ Public Class Form1
 
         If TopShortDayMenuItem.Checked Then TopShortDayMenuItem.Checked = False
 
+        If TopMedDateMenuItem.Checked Then TopMedDateMenuItem.Checked = False
 
 
 
     End Sub
 
-    Private Sub Form1_ResizeEnd(sender As Object, e As EventArgs) Handles Me.ResizeEnd
+
+    Private Sub TopMedDateMenuItem_Click(sender As Object, e As EventArgs) Handles TopMedDateMenuItem.Click
+
+        If Not TopDisplay.info = InfoType.MedDate Then TopDisplay.info = InfoType.MedDate
+
+        If Not TopMedDateMenuItem.Checked Then TopMedDateMenuItem.Checked = True
 
 
-        '' Center the main display in the client rectangle.
-        'MainDisplay.location.X = ClientSize.Width \ 2
-        'MainDisplay.location.Y = (ClientSize.Height + MenuStrip1.Height) \ 2
+
+
+        If TopDayMenuItem.Checked Then TopDayMenuItem.Checked = False
+
+        If TopShortDayMenuItem.Checked Then TopShortDayMenuItem.Checked = False
+
+        If TopLongDateMenuItem.Checked Then TopLongDateMenuItem.Checked = False
+
+
 
     End Sub
 
