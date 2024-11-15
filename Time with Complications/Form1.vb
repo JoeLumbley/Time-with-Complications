@@ -28,13 +28,8 @@ Public Class Form1
 
     Private Context As BufferedGraphicsContext
     Private Buffer As BufferedGraphics
-    'Private DisplayText As String
-    'Private TimeFont As New Font("Segoe UI", 12, FontStyle.Regular)
-    'Private TimeFontSize As Single
-    'Private TimePosition As New Point(100, 0)
     Private TimeZone As String
 
-    'Private Zone As String
 
     Private TimeZoneCity As String
 
@@ -129,6 +124,10 @@ Public Class Form1
                         TopDisplay.text = "Sat"
                 End Select
 
+            Case InfoType.LongDate
+
+                TopDisplay.text = Now.ToLongDateString
+
         End Select
 
 
@@ -175,30 +174,30 @@ Public Class Form1
     Private Sub Form1_Resize(sender As Object, e As EventArgs) Handles Me.Resize
 
         ' Set the font size for the main display based on the width of the client rectangle
-        Dim FontSize As Integer = ClientRectangle.Width \ 12
+        Dim FontSize As Integer = ClientSize.Width \ 14
 
         MainDisplay.font = New Font("Segoe UI", FontSize, FontStyle.Regular)
 
         ' Center the main display in the client rectangle.
-        MainDisplay.location.X = ClientRectangle.Width \ 2
-        MainDisplay.location.Y = ClientRectangle.Height \ 2
+        MainDisplay.location.X = ClientSize.Width \ 2
+        MainDisplay.location.Y = (ClientSize.Height + MenuStrip1.Height) \ 2
 
-        FontSize = ClientRectangle.Width \ 35
+        FontSize = ClientSize.Width \ 39
 
         TopDisplay.font = New Font("Segoe UI", FontSize, FontStyle.Regular)
 
 
-        TopDisplay.location.X = ClientRectangle.Width \ 2
-        TopDisplay.location.Y = ClientRectangle.Height \ 2 - ClientRectangle.Width \ 8
+        TopDisplay.location.X = ClientSize.Width \ 2
+        TopDisplay.location.Y = (ClientSize.Height + MenuStrip1.Height) \ 2 - ClientSize.Width \ 10
 
 
-        FontSize = ClientRectangle.Width \ 35
+        FontSize = ClientSize.Width \ 39
 
         BottomDisplay.font = New Font("Segoe UI", FontSize, FontStyle.Regular)
 
 
-        BottomDisplay.location.X = ClientRectangle.Width \ 2
-        BottomDisplay.location.Y = ClientRectangle.Height \ 2 + ClientRectangle.Width \ 8
+        BottomDisplay.location.X = ClientSize.Width \ 2
+        BottomDisplay.location.Y = (ClientSize.Height + MenuStrip1.Height) \ 2 + ClientSize.Width \ 10
 
 
         ' Dispose of the existing buffer
@@ -255,12 +254,16 @@ Public Class Form1
                     .PixelOffsetMode = Drawing2D.PixelOffsetMode.None
                     .CompositingQuality = Drawing2D.CompositingQuality.HighQuality
 
+
+
                     .DrawString(MainDisplay.text, MainDisplay.font, Brushes.White, MainDisplay.location, AlineCenterMiddle)
 
                     .DrawString(TopDisplay.text, TopDisplay.font, Brushes.LightGray, TopDisplay.location, AlineCenterMiddle)
 
                     .DrawString(BottomDisplay.text, BottomDisplay.font, Brushes.LightGray, BottomDisplay.location, AlineCenterMiddle)
 
+
+                    '.FillRectangle(Brushes.Blue, MainDisplay.location.X, MainDisplay.location.Y, 25, 25)
 
                 End With
 
@@ -335,8 +338,10 @@ Public Class Form1
 
         If Not TopDayMenuItem.Checked Then TopDayMenuItem.Checked = True
 
+
         If TopShortDayMenuItem.Checked Then TopShortDayMenuItem.Checked = False
 
+        If TopLongDateMenuItem.Checked Then TopLongDateMenuItem.Checked = False
 
     End Sub
 
@@ -346,7 +351,36 @@ Public Class Form1
 
         If Not TopShortDayMenuItem.Checked Then TopShortDayMenuItem.Checked = True
 
+
         If TopDayMenuItem.Checked Then TopDayMenuItem.Checked = False
+
+        If TopLongDateMenuItem.Checked Then TopLongDateMenuItem.Checked = False
+
+    End Sub
+
+    Private Sub TopLongDateMenuItem_Click(sender As Object, e As EventArgs) Handles TopLongDateMenuItem.Click
+
+        If Not TopDisplay.info = InfoType.LongDate Then TopDisplay.info = InfoType.LongDate
+
+        If Not TopLongDateMenuItem.Checked Then TopLongDateMenuItem.Checked = True
+
+
+
+        If TopDayMenuItem.Checked Then TopDayMenuItem.Checked = False
+
+        If TopShortDayMenuItem.Checked Then TopShortDayMenuItem.Checked = False
+
+
+
+
+    End Sub
+
+    Private Sub Form1_ResizeEnd(sender As Object, e As EventArgs) Handles Me.ResizeEnd
+
+
+        '' Center the main display in the client rectangle.
+        'MainDisplay.location.X = ClientSize.Width \ 2
+        'MainDisplay.location.Y = (ClientSize.Height + MenuStrip1.Height) \ 2
 
     End Sub
 

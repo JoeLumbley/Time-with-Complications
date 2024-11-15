@@ -31,6 +31,7 @@ Partial Class Form1
         TopToolStripMenuItem = New ToolStripMenuItem()
         TopDayMenuItem = New ToolStripMenuItem()
         TopShortDayMenuItem = New ToolStripMenuItem()
+        TopLongDateMenuItem = New ToolStripMenuItem()
         MenuStrip1.SuspendLayout()
         SuspendLayout()
         ' 
@@ -70,7 +71,7 @@ Partial Class Form1
         ' 
         ' TopToolStripMenuItem
         ' 
-        TopToolStripMenuItem.DropDownItems.AddRange(New ToolStripItem() {TopDayMenuItem, TopShortDayMenuItem})
+        TopToolStripMenuItem.DropDownItems.AddRange(New ToolStripItem() {TopDayMenuItem, TopShortDayMenuItem, TopLongDateMenuItem})
         TopToolStripMenuItem.Name = "TopToolStripMenuItem"
         TopToolStripMenuItem.Size = New Size(57, 29)
         TopToolStripMenuItem.Text = "Top"
@@ -88,6 +89,12 @@ Partial Class Form1
         TopShortDayMenuItem.Name = "TopShortDayMenuItem"
         TopShortDayMenuItem.Size = New Size(270, 34)
         TopShortDayMenuItem.Text = "Short Day"
+        ' 
+        ' TopLongDateMenuItem
+        ' 
+        TopLongDateMenuItem.Name = "TopLongDateMenuItem"
+        TopLongDateMenuItem.Size = New Size(270, 34)
+        TopLongDateMenuItem.Text = "Long Date"
         ' 
         ' Form1
         ' 
@@ -112,5 +119,6 @@ Partial Class Form1
     Friend WithEvents TopToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents TopDayMenuItem As ToolStripMenuItem
     Friend WithEvents TopShortDayMenuItem As ToolStripMenuItem
+    Friend WithEvents TopLongDateMenuItem As ToolStripMenuItem
 
 End Class
