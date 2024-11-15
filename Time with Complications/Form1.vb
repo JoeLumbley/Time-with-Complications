@@ -322,6 +322,7 @@ Public Class Form1
 
         If Not TwentyFourHourMenuItem.Checked Then TwentyFourHourMenuItem.Checked = True
 
+        ' Uncheck the other menu option
         If TwelveHourMenuItem.Checked Then TwelveHourMenuItem.Checked = False
 
     End Sub
@@ -332,6 +333,7 @@ Public Class Form1
 
         If Not TwelveHourMenuItem.Checked Then TwelveHourMenuItem.Checked = True
 
+        ' Uncheck the other menu option
         If TwentyFourHourMenuItem.Checked Then TwentyFourHourMenuItem.Checked = False
 
     End Sub
@@ -342,13 +344,10 @@ Public Class Form1
 
         If Not TopDayMenuItem.Checked Then TopDayMenuItem.Checked = True
 
-
+        ' Uncheck the other menu options
         If TopShortDayMenuItem.Checked Then TopShortDayMenuItem.Checked = False
-
         If TopLongDateMenuItem.Checked Then TopLongDateMenuItem.Checked = False
-
         If TopMedDateMenuItem.Checked Then TopMedDateMenuItem.Checked = False
-
 
     End Sub
 
@@ -358,11 +357,9 @@ Public Class Form1
 
         If Not TopShortDayMenuItem.Checked Then TopShortDayMenuItem.Checked = True
 
-
+        ' Uncheck the other menu options
         If TopDayMenuItem.Checked Then TopDayMenuItem.Checked = False
-
         If TopLongDateMenuItem.Checked Then TopLongDateMenuItem.Checked = False
-
         If TopMedDateMenuItem.Checked Then TopMedDateMenuItem.Checked = False
 
     End Sub
@@ -373,18 +370,12 @@ Public Class Form1
 
         If Not TopLongDateMenuItem.Checked Then TopLongDateMenuItem.Checked = True
 
-
-
+        ' Uncheck the other menu options
         If TopDayMenuItem.Checked Then TopDayMenuItem.Checked = False
-
         If TopShortDayMenuItem.Checked Then TopShortDayMenuItem.Checked = False
-
         If TopMedDateMenuItem.Checked Then TopMedDateMenuItem.Checked = False
 
-
-
     End Sub
-
 
     Private Sub TopMedDateMenuItem_Click(sender As Object, e As EventArgs) Handles TopMedDateMenuItem.Click
 
@@ -392,19 +383,11 @@ Public Class Form1
 
         If Not TopMedDateMenuItem.Checked Then TopMedDateMenuItem.Checked = True
 
-
-
-
+        ' Uncheck the other menu options
         If TopDayMenuItem.Checked Then TopDayMenuItem.Checked = False
-
         If TopShortDayMenuItem.Checked Then TopShortDayMenuItem.Checked = False
-
         If TopLongDateMenuItem.Checked Then TopLongDateMenuItem.Checked = False
 
-
-
     End Sub
-
-
 
 End Class
