@@ -132,6 +132,10 @@ Public Class Form1
 
                 TopDisplay.text = Now.ToString("MMMM d, yyyy")
 
+            Case InfoType.ShortDate
+
+                TopDisplay.text = Now.ToShortDateString
+
         End Select
 
 
@@ -163,8 +167,9 @@ Public Class Form1
 
         'TopDisplay.text = Now.DayOfWeek.ToString
         'BottomDisplay.text = Now.Date()
-        BottomDisplay.text = Now.ToString("MMMM d, yyyy")
+        'BottomDisplay.text = Now.ToString("MMMM d, yyyy")
 
+        BottomDisplay.text = Now.DayOfWeek.ToString
 
         'TopDisplay.text = Now.ToLocalTime.ToShortTimeString() & Environment.NewLine & TimeZoneCity ' Formats the current time to 12-hour format and time zone
 
@@ -279,7 +284,6 @@ Public Class Form1
 
     End Sub
 
-
     Private Sub InitializeForm()
 
         CenterToScreen()
@@ -340,6 +344,7 @@ Public Class Form1
         If TopShortDayMenuItem.Checked Then TopShortDayMenuItem.Checked = False
         If TopLongDateMenuItem.Checked Then TopLongDateMenuItem.Checked = False
         If TopMedDateMenuItem.Checked Then TopMedDateMenuItem.Checked = False
+        If TopShortDateMenuItem.Checked Then TopShortDateMenuItem.Checked = False
 
     End Sub
 
@@ -353,6 +358,7 @@ Public Class Form1
         If TopDayMenuItem.Checked Then TopDayMenuItem.Checked = False
         If TopLongDateMenuItem.Checked Then TopLongDateMenuItem.Checked = False
         If TopMedDateMenuItem.Checked Then TopMedDateMenuItem.Checked = False
+        If TopShortDateMenuItem.Checked Then TopShortDateMenuItem.Checked = False
 
     End Sub
 
@@ -366,6 +372,7 @@ Public Class Form1
         If TopDayMenuItem.Checked Then TopDayMenuItem.Checked = False
         If TopShortDayMenuItem.Checked Then TopShortDayMenuItem.Checked = False
         If TopMedDateMenuItem.Checked Then TopMedDateMenuItem.Checked = False
+        If TopShortDateMenuItem.Checked Then TopShortDateMenuItem.Checked = False
 
     End Sub
 
@@ -379,7 +386,26 @@ Public Class Form1
         If TopDayMenuItem.Checked Then TopDayMenuItem.Checked = False
         If TopShortDayMenuItem.Checked Then TopShortDayMenuItem.Checked = False
         If TopLongDateMenuItem.Checked Then TopLongDateMenuItem.Checked = False
+        If TopShortDateMenuItem.Checked Then TopShortDateMenuItem.Checked = False
 
     End Sub
+
+    Private Sub TopShortDateMenuItem_Click(sender As Object, e As EventArgs) Handles TopShortDateMenuItem.Click
+
+        If Not TopDisplay.info = InfoType.ShortDate Then TopDisplay.info = InfoType.ShortDate
+
+        If Not TopShortDateMenuItem.Checked Then TopShortDateMenuItem.Checked = True
+
+
+        ' Uncheck the other menu options
+        If TopDayMenuItem.Checked Then TopDayMenuItem.Checked = False
+        If TopShortDayMenuItem.Checked Then TopShortDayMenuItem.Checked = False
+        If TopLongDateMenuItem.Checked Then TopLongDateMenuItem.Checked = False
+        If TopMedDateMenuItem.Checked Then TopMedDateMenuItem.Checked = False
+
+    End Sub
+
+
+
 
 End Class
