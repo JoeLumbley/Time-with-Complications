@@ -171,46 +171,58 @@ Public Class Form1
 
         'DisplayText = Now.ToLocalTime.ToString("HH:mm") ' Formats the current time to 24-hour format (military time)
 
-        Refresh() ' Calls OnPaint Sub
+
+
+        If Not WindowState = FormWindowState.Minimized Then
+
+            Refresh() ' Calls OnPaint Sub
+
+
+        End If
+
 
     End Sub
 
     Private Sub Form1_Resize(sender As Object, e As EventArgs) Handles Me.Resize
 
-        ' Set the font size for the main display based on the width of the client rectangle
-        Dim FontSize As Integer = ClientSize.Width \ 14
-        MainDisplay.font = New Font("Segoe UI", FontSize, FontStyle.Regular)
+        If Not WindowState = FormWindowState.Minimized Then
 
-        ' Center the main display in the client rectangle.
-        MainDisplay.location.X = ClientSize.Width \ 2
-        MainDisplay.location.Y = (ClientSize.Height + MenuStrip1.Height) \ 2
+            ' Set the font size for the main display based on the width of the client rectangle
+            Dim FontSize As Integer = ClientSize.Width \ 14
+            MainDisplay.font = New Font("Segoe UI", FontSize, FontStyle.Regular)
 
-        ' Set the font size for the top display based on the width of the client rectangle
-        FontSize = ClientSize.Width \ 41
-        TopDisplay.font = New Font("Segoe UI", FontSize, FontStyle.Regular)
+            ' Center the main display in the client rectangle.
+            MainDisplay.location.X = ClientSize.Width \ 2
+            MainDisplay.location.Y = (ClientSize.Height + MenuStrip1.Height) \ 2
 
-        ' Center the top display in the client rectangle above the main display.
-        TopDisplay.location.X = ClientSize.Width \ 2
-        TopDisplay.location.Y = (ClientSize.Height + MenuStrip1.Height) \ 2 - ClientSize.Width \ 10
+            ' Set the font size for the top display based on the width of the client rectangle
+            FontSize = ClientSize.Width \ 41
+            TopDisplay.font = New Font("Segoe UI", FontSize, FontStyle.Regular)
 
-        ' Set the font size for the bottom display based on the width of the client rectangle
-        'FontSize = ClientSize.Width \ 39
-        BottomDisplay.font = New Font("Segoe UI", FontSize, FontStyle.Regular)
+            ' Center the top display in the client rectangle above the main display.
+            TopDisplay.location.X = ClientSize.Width \ 2
+            TopDisplay.location.Y = (ClientSize.Height + MenuStrip1.Height) \ 2 - ClientSize.Width \ 10
 
-        ' Center the bottom display in the client rectangle below the main display.
-        BottomDisplay.location.X = ClientSize.Width \ 2
-        BottomDisplay.location.Y = (ClientSize.Height + MenuStrip1.Height) \ 2 + ClientSize.Width \ 10
+            ' Set the font size for the bottom display based on the width of the client rectangle
+            'FontSize = ClientSize.Width \ 39
+            BottomDisplay.font = New Font("Segoe UI", FontSize, FontStyle.Regular)
 
-        ' Dispose of the existing buffer
-        If Buffer IsNot Nothing Then
+            ' Center the bottom display in the client rectangle below the main display.
+            BottomDisplay.location.X = ClientSize.Width \ 2
+            BottomDisplay.location.Y = (ClientSize.Height + MenuStrip1.Height) \ 2 + ClientSize.Width \ 10
 
-            Buffer.Dispose()
+            ' Dispose of the existing buffer
+            If Buffer IsNot Nothing Then
 
-            Buffer = Nothing ' Set to Nothing to avoid using a disposed object
+                Buffer.Dispose()
+
+                Buffer = Nothing ' Set to Nothing to avoid using a disposed object
+
+            End If
+
+            ' The buffer will be reallocated in OnPaint
 
         End If
-
-        ' The buffer will be reallocated in OnPaint
 
     End Sub
 
