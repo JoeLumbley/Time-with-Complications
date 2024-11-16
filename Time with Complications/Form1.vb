@@ -396,7 +396,6 @@ Public Class Form1
 
         If Not TopShortDateMenuItem.Checked Then TopShortDateMenuItem.Checked = True
 
-
         ' Uncheck the other menu options
         If TopDayMenuItem.Checked Then TopDayMenuItem.Checked = False
         If TopShortDayMenuItem.Checked Then TopShortDayMenuItem.Checked = False
@@ -404,8 +403,5 @@ Public Class Form1
         If TopMedDateMenuItem.Checked Then TopMedDateMenuItem.Checked = False
 
     End Sub
-
-
-
 
 End Class
