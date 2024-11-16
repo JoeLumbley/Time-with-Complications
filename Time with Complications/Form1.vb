@@ -63,8 +63,6 @@ Public Class Form1
     Private TopDisplay As DisplayObject
     Private BottomDisplay As DisplayObject
 
-
-
     Private ReadOnly AlineCenterMiddle As New StringFormat With {.Alignment = StringAlignment.Center, .LineAlignment = StringAlignment.Center}
 
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
@@ -420,7 +418,6 @@ Public Class Form1
 
         If Not TopTimeZoneMenuItem.Checked Then TopTimeZoneMenuItem.Checked = True
 
-
         ' Uncheck the other menu options
         If TopDayMenuItem.Checked Then TopDayMenuItem.Checked = False
         If TopShortDayMenuItem.Checked Then TopShortDayMenuItem.Checked = False
@@ -429,4 +426,5 @@ Public Class Form1
         If TopShortDateMenuItem.Checked Then TopShortDateMenuItem.Checked = False
 
     End Sub
+
 End Class
