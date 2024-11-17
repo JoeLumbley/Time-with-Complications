@@ -98,8 +98,6 @@ Public Class Form1
 
         End If
 
-
-
         Select Case TopDisplay.info
 
             Case InfoType.LongDayOfWeek
@@ -163,9 +161,6 @@ Public Class Form1
                 TopDisplay.text = "Local Time"
 
         End Select
-
-
-
 
         Select Case BottomDisplay.info
 
@@ -231,39 +226,12 @@ Public Class Form1
 
         End Select
 
-
-
-        'Dim timeZone As TimeZoneInfo = TimeZoneInfo.Local
-
-        'If timeZone = TimeZoneInfo.Id Then
-
-
-        'End If
-
-
-
-
-
-        'TopDisplay.text = Now.DayOfWeek.ToString
-        'BottomDisplay.text = Now.Date()
-        'BottomDisplay.text = Now.ToString("MMMM d, yyyy")
-
-        'BottomDisplay.text = Now.DayOfWeek.ToString
-
-        'TopDisplay.text = Now.ToLocalTime.ToShortTimeString() & Environment.NewLine & TimeZoneCity ' Formats the current time to 12-hour format and time zone
-
-
-        'DisplayText = Now.ToLocalTime.ToString("HH:mm") ' Formats the current time to 24-hour format (military time)
-
-
-
         If Not WindowState = FormWindowState.Minimized Then
 
             Refresh() ' Calls OnPaint Sub
 
 
         End If
-
 
     End Sub
 
@@ -549,11 +517,6 @@ Public Class Form1
 
     End Sub
 
-
-
-
-
-
     Private Sub BottomDayMenuItem_Click(sender As Object, e As EventArgs) Handles BottomDayMenuItem.Click
 
         If Not BottomDisplay.info = InfoType.LongDayOfWeek Then BottomDisplay.info = InfoType.LongDayOfWeek
@@ -603,7 +566,6 @@ Public Class Form1
         If BottomTimeZoneCityMenuItem.Checked Then BottomTimeZoneCityMenuItem.Checked = False
         If BottomLocalTimeMenuItem.Checked Then BottomLocalTimeMenuItem.Checked = False
 
-
     End Sub
 
     Private Sub BottomMediumDateMenuItem_Click(sender As Object, e As EventArgs) Handles BottomMediumDateMenuItem.Click
@@ -621,12 +583,9 @@ Public Class Form1
         If BottomTimeZoneCityMenuItem.Checked Then BottomTimeZoneCityMenuItem.Checked = False
         If BottomLocalTimeMenuItem.Checked Then BottomLocalTimeMenuItem.Checked = False
 
-
-
     End Sub
 
     Private Sub BottomShortDateMenuItem_Click(sender As Object, e As EventArgs) Handles BottomShortDateMenuItem.Click
-
 
         If Not BottomDisplay.info = InfoType.ShortDate Then BottomDisplay.info = InfoType.ShortDate
 
@@ -640,9 +599,6 @@ Public Class Form1
         If BottomTimeZoneMenuItem.Checked Then BottomTimeZoneMenuItem.Checked = False
         If BottomTimeZoneCityMenuItem.Checked Then BottomTimeZoneCityMenuItem.Checked = False
         If BottomLocalTimeMenuItem.Checked Then BottomLocalTimeMenuItem.Checked = False
-
-
-
 
     End Sub
 
@@ -661,13 +617,9 @@ Public Class Form1
         If BottomTimeZoneCityMenuItem.Checked Then BottomTimeZoneCityMenuItem.Checked = False
         If BottomLocalTimeMenuItem.Checked Then BottomLocalTimeMenuItem.Checked = False
 
-
-
-
     End Sub
 
     Private Sub BottomTimeZoneCityMenuItem_Click(sender As Object, e As EventArgs) Handles BottomTimeZoneCityMenuItem.Click
-
 
         If Not BottomDisplay.info = InfoType.TimeZoneCity Then BottomDisplay.info = InfoType.TimeZoneCity
 
@@ -681,9 +633,6 @@ Public Class Form1
         If BottomShortDateMenuItem.Checked Then BottomShortDateMenuItem.Checked = False
         If BottomTimeZoneMenuItem.Checked Then BottomTimeZoneMenuItem.Checked = False
         If BottomLocalTimeMenuItem.Checked Then BottomLocalTimeMenuItem.Checked = False
-
-
-
 
     End Sub
 
@@ -702,15 +651,6 @@ Public Class Form1
         If BottomTimeZoneMenuItem.Checked Then BottomTimeZoneMenuItem.Checked = False
         If BottomTimeZoneCityMenuItem.Checked Then BottomTimeZoneCityMenuItem.Checked = False
 
-
-
-
-
-
     End Sub
-
-
-
-
 
 End Class
