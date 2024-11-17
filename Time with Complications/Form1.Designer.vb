@@ -70,13 +70,13 @@ Partial Class Form1
         TwelveHourMenuItem.Checked = True
         TwelveHourMenuItem.CheckState = CheckState.Checked
         TwelveHourMenuItem.Name = "TwelveHourMenuItem"
-        TwelveHourMenuItem.Size = New Size(179, 34)
+        TwelveHourMenuItem.Size = New Size(270, 34)
         TwelveHourMenuItem.Text = "12 Hour"
         ' 
         ' TwentyFourHourMenuItem
         ' 
         TwentyFourHourMenuItem.Name = "TwentyFourHourMenuItem"
-        TwentyFourHourMenuItem.Size = New Size(179, 34)
+        TwentyFourHourMenuItem.Size = New Size(270, 34)
         TwentyFourHourMenuItem.Text = "24 Hour"
         ' 
         ' TopToolStripMenuItem
@@ -163,6 +163,8 @@ Partial Class Form1
         ' 
         ' BottomMediumDateMenuItem
         ' 
+        BottomMediumDateMenuItem.Checked = True
+        BottomMediumDateMenuItem.CheckState = CheckState.Checked
         BottomMediumDateMenuItem.Name = "BottomMediumDateMenuItem"
         BottomMediumDateMenuItem.Size = New Size(270, 34)
         BottomMediumDateMenuItem.Text = "Medium Date"
