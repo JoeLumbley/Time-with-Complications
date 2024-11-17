@@ -47,6 +47,7 @@ Public Class Form1
         ShortDate
         TimeZone
         TimeZoneCity
+        LocalTime
     End Enum
 
     Private Hours As HourFormat = HourFormat.Twelve
@@ -96,6 +97,8 @@ Public Class Form1
             MainDisplay.text = Now.ToLocalTime.ToString("HH:mm")
 
         End If
+
+
 
         Select Case TopDisplay.info
 
@@ -155,9 +158,78 @@ Public Class Form1
 
                 TopDisplay.text = TimeZoneCity
 
+            Case InfoType.LocalTime
+
+                TopDisplay.text = "Local Time"
+
         End Select
 
 
+
+
+        Select Case BottomDisplay.info
+
+            Case InfoType.LongDayOfWeek
+
+                BottomDisplay.text = Now.DayOfWeek.ToString
+
+            Case InfoType.ShortDayOfWeek
+
+                Select Case Now.DayOfWeek
+                    Case DayOfWeek.Sunday
+                        BottomDisplay.text = "Sun"
+                    Case DayOfWeek.Monday
+                        BottomDisplay.text = "Mon"
+                    Case DayOfWeek.Tuesday
+                        BottomDisplay.text = "Tue"
+                    Case DayOfWeek.Wednesday
+                        BottomDisplay.text = "Wed"
+                    Case DayOfWeek.Thursday
+                        BottomDisplay.text = "Thu"
+                    Case DayOfWeek.Friday
+                        BottomDisplay.text = "Fri"
+                    Case DayOfWeek.Saturday
+                        BottomDisplay.text = "Sat"
+                End Select
+
+            Case InfoType.LongDate
+
+                BottomDisplay.text = Now.ToLongDateString
+
+            Case InfoType.MedDate
+
+                BottomDisplay.text = Now.ToString("MMMM d, yyyy")
+
+            Case InfoType.ShortDate
+
+                BottomDisplay.text = Now.ToShortDateString
+
+            Case InfoType.TimeZone
+
+                BottomDisplay.text = TimeZoneInfo.Local.Id
+
+            Case InfoType.TimeZoneCity
+
+                Select Case TimeZoneInfo.Local.Id
+                    Case "Eastern Standard Time"
+                        TimeZoneCity = "New York"
+                    Case "Central Standard Time"
+                        TimeZoneCity = "Chicago"
+                    Case "Mountain Standard Time"
+                        TimeZoneCity = "Denver"
+                    Case "Pacific Standard Time"
+                        TimeZoneCity = "Los Angeles"
+                    Case Else
+                        TimeZoneCity = "Unknown"
+                End Select
+
+                BottomDisplay.text = TimeZoneCity
+
+            Case InfoType.LocalTime
+
+                BottomDisplay.text = "Local Time"
+
+        End Select
 
 
 
@@ -176,7 +248,7 @@ Public Class Form1
         'BottomDisplay.text = Now.Date()
         'BottomDisplay.text = Now.ToString("MMMM d, yyyy")
 
-        BottomDisplay.text = Now.DayOfWeek.ToString
+        'BottomDisplay.text = Now.DayOfWeek.ToString
 
         'TopDisplay.text = Now.ToLocalTime.ToShortTimeString() & Environment.NewLine & TimeZoneCity ' Formats the current time to 12-hour format and time zone
 
@@ -354,6 +426,7 @@ Public Class Form1
         If TopShortDateMenuItem.Checked Then TopShortDateMenuItem.Checked = False
         If TopTimeZoneMenuItem.Checked Then TopTimeZoneMenuItem.Checked = False
         If TopTimeZoneCityMenuItem.Checked Then TopTimeZoneCityMenuItem.Checked = False
+        If TopLocalTimeMenuItem.Checked Then TopLocalTimeMenuItem.Checked = False
 
     End Sub
 
@@ -370,6 +443,7 @@ Public Class Form1
         If TopShortDateMenuItem.Checked Then TopShortDateMenuItem.Checked = False
         If TopTimeZoneMenuItem.Checked Then TopTimeZoneMenuItem.Checked = False
         If TopTimeZoneCityMenuItem.Checked Then TopTimeZoneCityMenuItem.Checked = False
+        If TopLocalTimeMenuItem.Checked Then TopLocalTimeMenuItem.Checked = False
 
     End Sub
 
@@ -386,6 +460,7 @@ Public Class Form1
         If TopShortDateMenuItem.Checked Then TopShortDateMenuItem.Checked = False
         If TopTimeZoneMenuItem.Checked Then TopTimeZoneMenuItem.Checked = False
         If TopTimeZoneCityMenuItem.Checked Then TopTimeZoneCityMenuItem.Checked = False
+        If TopLocalTimeMenuItem.Checked Then TopLocalTimeMenuItem.Checked = False
 
     End Sub
 
@@ -402,6 +477,7 @@ Public Class Form1
         If TopShortDateMenuItem.Checked Then TopShortDateMenuItem.Checked = False
         If TopTimeZoneMenuItem.Checked Then TopTimeZoneMenuItem.Checked = False
         If TopTimeZoneCityMenuItem.Checked Then TopTimeZoneCityMenuItem.Checked = False
+        If TopLocalTimeMenuItem.Checked Then TopLocalTimeMenuItem.Checked = False
 
     End Sub
 
@@ -418,6 +494,7 @@ Public Class Form1
         If TopMedDateMenuItem.Checked Then TopMedDateMenuItem.Checked = False
         If TopTimeZoneMenuItem.Checked Then TopTimeZoneMenuItem.Checked = False
         If TopTimeZoneCityMenuItem.Checked Then TopTimeZoneCityMenuItem.Checked = False
+        If TopLocalTimeMenuItem.Checked Then TopLocalTimeMenuItem.Checked = False
 
     End Sub
 
@@ -434,6 +511,7 @@ Public Class Form1
         If TopMedDateMenuItem.Checked Then TopMedDateMenuItem.Checked = False
         If TopShortDateMenuItem.Checked Then TopShortDateMenuItem.Checked = False
         If TopTimeZoneCityMenuItem.Checked Then TopTimeZoneCityMenuItem.Checked = False
+        If TopLocalTimeMenuItem.Checked Then TopLocalTimeMenuItem.Checked = False
 
     End Sub
 
@@ -450,8 +528,65 @@ Public Class Form1
         If TopMedDateMenuItem.Checked Then TopMedDateMenuItem.Checked = False
         If TopShortDateMenuItem.Checked Then TopShortDateMenuItem.Checked = False
         If TopTimeZoneMenuItem.Checked Then TopTimeZoneMenuItem.Checked = False
+        If TopLocalTimeMenuItem.Checked Then TopLocalTimeMenuItem.Checked = False
 
     End Sub
+
+    Private Sub TopLocalTimeMenuItem_Click(sender As Object, e As EventArgs) Handles TopLocalTimeMenuItem.Click
+
+        If Not TopDisplay.info = InfoType.LocalTime Then TopDisplay.info = InfoType.LocalTime
+
+        If Not TopLocalTimeMenuItem.Checked Then TopLocalTimeMenuItem.Checked = True
+
+        ' Uncheck the other menu options
+        If TopDayMenuItem.Checked Then TopDayMenuItem.Checked = False
+        If TopShortDayMenuItem.Checked Then TopShortDayMenuItem.Checked = False
+        If TopLongDateMenuItem.Checked Then TopLongDateMenuItem.Checked = False
+        If TopMedDateMenuItem.Checked Then TopMedDateMenuItem.Checked = False
+        If TopShortDateMenuItem.Checked Then TopShortDateMenuItem.Checked = False
+        If TopTimeZoneMenuItem.Checked Then TopTimeZoneMenuItem.Checked = False
+        If TopTimeZoneCityMenuItem.Checked Then TopTimeZoneCityMenuItem.Checked = False
+
+    End Sub
+
+    Private Sub BottomDayMenuItem_Click(sender As Object, e As EventArgs) Handles BottomDayMenuItem.Click
+
+        If Not BottomDisplay.info = InfoType.LongDayOfWeek Then BottomDisplay.info = InfoType.LongDayOfWeek
+
+        If Not BottomDayMenuItem.Checked Then BottomDayMenuItem.Checked = True
+
+        ' Uncheck the other menu options
+        If BottomShortDayMenuItem.Checked Then BottomShortDayMenuItem.Checked = False
+        'If TopLongDateMenuItem.Checked Then TopLongDateMenuItem.Checked = False
+        'If TopMedDateMenuItem.Checked Then TopMedDateMenuItem.Checked = False
+        'If TopShortDateMenuItem.Checked Then TopShortDateMenuItem.Checked = False
+        'If TopTimeZoneMenuItem.Checked Then TopTimeZoneMenuItem.Checked = False
+        'If TopTimeZoneCityMenuItem.Checked Then TopTimeZoneCityMenuItem.Checked = False
+        'If TopLocalTimeMenuItem.Checked Then TopLocalTimeMenuItem.Checked = False
+
+    End Sub
+
+    Private Sub BottomShortDayMenuItem_Click(sender As Object, e As EventArgs) Handles BottomShortDayMenuItem.Click
+
+        If Not BottomDisplay.info = InfoType.ShortDayOfWeek Then BottomDisplay.info = InfoType.ShortDayOfWeek
+
+        If Not BottomShortDayMenuItem.Checked Then BottomShortDayMenuItem.Checked = True
+
+        ' Uncheck the other menu options
+        If BottomDayMenuItem.Checked Then BottomDayMenuItem.Checked = False
+        'If TopLongDateMenuItem.Checked Then TopLongDateMenuItem.Checked = False
+        'If TopMedDateMenuItem.Checked Then TopMedDateMenuItem.Checked = False
+        'If TopShortDateMenuItem.Checked Then TopShortDateMenuItem.Checked = False
+        'If TopTimeZoneMenuItem.Checked Then TopTimeZoneMenuItem.Checked = False
+        'If TopTimeZoneCityMenuItem.Checked Then TopTimeZoneCityMenuItem.Checked = False
+        'If TopLocalTimeMenuItem.Checked Then TopLocalTimeMenuItem.Checked = False
+
+
+
+
+
+    End Sub
+
 
 
 
