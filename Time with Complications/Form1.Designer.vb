@@ -40,6 +40,8 @@ Partial Class Form1
         BottomToolStripMenuItem = New ToolStripMenuItem()
         BottomDayMenuItem = New ToolStripMenuItem()
         BottomShortDayMenuItem = New ToolStripMenuItem()
+        BottomLongDateMenuItem = New ToolStripMenuItem()
+        BottomMediumDateMenuItem = New ToolStripMenuItem()
         MenuStrip1.SuspendLayout()
         SuspendLayout()
         ' 
@@ -136,7 +138,7 @@ Partial Class Form1
         ' 
         ' BottomToolStripMenuItem
         ' 
-        BottomToolStripMenuItem.DropDownItems.AddRange(New ToolStripItem() {BottomDayMenuItem, BottomShortDayMenuItem})
+        BottomToolStripMenuItem.DropDownItems.AddRange(New ToolStripItem() {BottomDayMenuItem, BottomShortDayMenuItem, BottomLongDateMenuItem, BottomMediumDateMenuItem})
         BottomToolStripMenuItem.Name = "BottomToolStripMenuItem"
         BottomToolStripMenuItem.Size = New Size(88, 29)
         BottomToolStripMenuItem.Text = "Bottom"
@@ -151,7 +153,19 @@ Partial Class Form1
         ' 
         BottomShortDayMenuItem.Name = "BottomShortDayMenuItem"
         BottomShortDayMenuItem.Size = New Size(270, 34)
-        BottomShortDayMenuItem.Text = "ShortDay"
+        BottomShortDayMenuItem.Text = "Short Day"
+        ' 
+        ' BottomLongDateMenuItem
+        ' 
+        BottomLongDateMenuItem.Name = "BottomLongDateMenuItem"
+        BottomLongDateMenuItem.Size = New Size(270, 34)
+        BottomLongDateMenuItem.Text = "Long Date"
+        ' 
+        ' BottomMediumDateMenuItem
+        ' 
+        BottomMediumDateMenuItem.Name = "BottomMediumDateMenuItem"
+        BottomMediumDateMenuItem.Size = New Size(270, 34)
+        BottomMediumDateMenuItem.Text = "Medium Date"
         ' 
         ' Form1
         ' 
@@ -185,5 +199,7 @@ Partial Class Form1
     Friend WithEvents BottomToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents BottomDayMenuItem As ToolStripMenuItem
     Friend WithEvents BottomShortDayMenuItem As ToolStripMenuItem
+    Friend WithEvents BottomLongDateMenuItem As ToolStripMenuItem
+    Friend WithEvents BottomMediumDateMenuItem As ToolStripMenuItem
 
 End Class
