@@ -44,6 +44,7 @@ Partial Class Form1
         BottomMediumDateMenuItem = New ToolStripMenuItem()
         BottomShortDateMenuItem = New ToolStripMenuItem()
         BottomTimeZoneMenuItem = New ToolStripMenuItem()
+        BottomTimeZoneCityMenuItem = New ToolStripMenuItem()
         MenuStrip1.SuspendLayout()
         SuspendLayout()
         ' 
@@ -140,7 +141,7 @@ Partial Class Form1
         ' 
         ' BottomToolStripMenuItem
         ' 
-        BottomToolStripMenuItem.DropDownItems.AddRange(New ToolStripItem() {BottomDayMenuItem, BottomShortDayMenuItem, BottomLongDateMenuItem, BottomMediumDateMenuItem, BottomShortDateMenuItem, BottomTimeZoneMenuItem})
+        BottomToolStripMenuItem.DropDownItems.AddRange(New ToolStripItem() {BottomDayMenuItem, BottomShortDayMenuItem, BottomLongDateMenuItem, BottomMediumDateMenuItem, BottomShortDateMenuItem, BottomTimeZoneMenuItem, BottomTimeZoneCityMenuItem})
         BottomToolStripMenuItem.Name = "BottomToolStripMenuItem"
         BottomToolStripMenuItem.Size = New Size(88, 29)
         BottomToolStripMenuItem.Text = "Bottom"
@@ -148,19 +149,19 @@ Partial Class Form1
         ' BottomDayMenuItem
         ' 
         BottomDayMenuItem.Name = "BottomDayMenuItem"
-        BottomDayMenuItem.Size = New Size(222, 34)
+        BottomDayMenuItem.Size = New Size(270, 34)
         BottomDayMenuItem.Text = "Day"
         ' 
         ' BottomShortDayMenuItem
         ' 
         BottomShortDayMenuItem.Name = "BottomShortDayMenuItem"
-        BottomShortDayMenuItem.Size = New Size(222, 34)
+        BottomShortDayMenuItem.Size = New Size(270, 34)
         BottomShortDayMenuItem.Text = "Short Day"
         ' 
         ' BottomLongDateMenuItem
         ' 
         BottomLongDateMenuItem.Name = "BottomLongDateMenuItem"
-        BottomLongDateMenuItem.Size = New Size(222, 34)
+        BottomLongDateMenuItem.Size = New Size(270, 34)
         BottomLongDateMenuItem.Text = "Long Date"
         ' 
         ' BottomMediumDateMenuItem
@@ -168,13 +169,13 @@ Partial Class Form1
         BottomMediumDateMenuItem.Checked = True
         BottomMediumDateMenuItem.CheckState = CheckState.Checked
         BottomMediumDateMenuItem.Name = "BottomMediumDateMenuItem"
-        BottomMediumDateMenuItem.Size = New Size(222, 34)
+        BottomMediumDateMenuItem.Size = New Size(270, 34)
         BottomMediumDateMenuItem.Text = "Medium Date"
         ' 
         ' BottomShortDateMenuItem
         ' 
         BottomShortDateMenuItem.Name = "BottomShortDateMenuItem"
-        BottomShortDateMenuItem.Size = New Size(222, 34)
+        BottomShortDateMenuItem.Size = New Size(270, 34)
         BottomShortDateMenuItem.Text = "Short Date"
         ' 
         ' BottomTimeZoneMenuItem
@@ -182,6 +183,12 @@ Partial Class Form1
         BottomTimeZoneMenuItem.Name = "BottomTimeZoneMenuItem"
         BottomTimeZoneMenuItem.Size = New Size(270, 34)
         BottomTimeZoneMenuItem.Text = "Time Zone"
+        ' 
+        ' BottomTimeZoneCityMenuItem
+        ' 
+        BottomTimeZoneCityMenuItem.Name = "BottomTimeZoneCityMenuItem"
+        BottomTimeZoneCityMenuItem.Size = New Size(270, 34)
+        BottomTimeZoneCityMenuItem.Text = "Time Zone City"
         ' 
         ' Form1
         ' 
@@ -219,5 +226,6 @@ Partial Class Form1
     Friend WithEvents BottomMediumDateMenuItem As ToolStripMenuItem
     Friend WithEvents BottomShortDateMenuItem As ToolStripMenuItem
     Friend WithEvents BottomTimeZoneMenuItem As ToolStripMenuItem
+    Friend WithEvents BottomTimeZoneCityMenuItem As ToolStripMenuItem
 
 End Class
