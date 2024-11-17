@@ -45,6 +45,7 @@ Partial Class Form1
         BottomShortDateMenuItem = New ToolStripMenuItem()
         BottomTimeZoneMenuItem = New ToolStripMenuItem()
         BottomTimeZoneCityMenuItem = New ToolStripMenuItem()
+        BottomLocalTimeMenuItem = New ToolStripMenuItem()
         MenuStrip1.SuspendLayout()
         SuspendLayout()
         ' 
@@ -141,7 +142,7 @@ Partial Class Form1
         ' 
         ' BottomToolStripMenuItem
         ' 
-        BottomToolStripMenuItem.DropDownItems.AddRange(New ToolStripItem() {BottomDayMenuItem, BottomShortDayMenuItem, BottomLongDateMenuItem, BottomMediumDateMenuItem, BottomShortDateMenuItem, BottomTimeZoneMenuItem, BottomTimeZoneCityMenuItem})
+        BottomToolStripMenuItem.DropDownItems.AddRange(New ToolStripItem() {BottomDayMenuItem, BottomShortDayMenuItem, BottomLongDateMenuItem, BottomMediumDateMenuItem, BottomShortDateMenuItem, BottomTimeZoneMenuItem, BottomTimeZoneCityMenuItem, BottomLocalTimeMenuItem})
         BottomToolStripMenuItem.Name = "BottomToolStripMenuItem"
         BottomToolStripMenuItem.Size = New Size(88, 29)
         BottomToolStripMenuItem.Text = "Bottom"
@@ -190,6 +191,12 @@ Partial Class Form1
         BottomTimeZoneCityMenuItem.Size = New Size(270, 34)
         BottomTimeZoneCityMenuItem.Text = "Time Zone City"
         ' 
+        ' BottomLocalTimeMenuItem
+        ' 
+        BottomLocalTimeMenuItem.Name = "BottomLocalTimeMenuItem"
+        BottomLocalTimeMenuItem.Size = New Size(270, 34)
+        BottomLocalTimeMenuItem.Text = "Local Time"
+        ' 
         ' Form1
         ' 
         AutoScaleDimensions = New SizeF(10F, 25F)
@@ -227,5 +234,6 @@ Partial Class Form1
     Friend WithEvents BottomShortDateMenuItem As ToolStripMenuItem
     Friend WithEvents BottomTimeZoneMenuItem As ToolStripMenuItem
     Friend WithEvents BottomTimeZoneCityMenuItem As ToolStripMenuItem
+    Friend WithEvents BottomLocalTimeMenuItem As ToolStripMenuItem
 
 End Class

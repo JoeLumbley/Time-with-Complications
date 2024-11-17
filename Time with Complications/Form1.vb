@@ -567,7 +567,7 @@ Public Class Form1
         If BottomShortDateMenuItem.Checked Then BottomShortDateMenuItem.Checked = False
         If BottomTimeZoneMenuItem.Checked Then BottomTimeZoneMenuItem.Checked = False
         If BottomTimeZoneCityMenuItem.Checked Then BottomTimeZoneCityMenuItem.Checked = False
-        'If TopLocalTimeMenuItem.Checked Then TopLocalTimeMenuItem.Checked = False
+        If BottomLocalTimeMenuItem.Checked Then BottomLocalTimeMenuItem.Checked = False
 
     End Sub
 
@@ -584,7 +584,7 @@ Public Class Form1
         If BottomShortDateMenuItem.Checked Then BottomShortDateMenuItem.Checked = False
         If BottomTimeZoneMenuItem.Checked Then BottomTimeZoneMenuItem.Checked = False
         If BottomTimeZoneCityMenuItem.Checked Then BottomTimeZoneCityMenuItem.Checked = False
-        'If TopLocalTimeMenuItem.Checked Then TopLocalTimeMenuItem.Checked = False
+        If BottomLocalTimeMenuItem.Checked Then BottomLocalTimeMenuItem.Checked = False
 
     End Sub
 
@@ -601,7 +601,7 @@ Public Class Form1
         If BottomShortDateMenuItem.Checked Then BottomShortDateMenuItem.Checked = False
         If BottomTimeZoneMenuItem.Checked Then BottomTimeZoneMenuItem.Checked = False
         If BottomTimeZoneCityMenuItem.Checked Then BottomTimeZoneCityMenuItem.Checked = False
-        'If TopLocalTimeMenuItem.Checked Then TopLocalTimeMenuItem.Checked = False
+        If BottomLocalTimeMenuItem.Checked Then BottomLocalTimeMenuItem.Checked = False
 
 
     End Sub
@@ -619,7 +619,7 @@ Public Class Form1
         If BottomShortDateMenuItem.Checked Then BottomShortDateMenuItem.Checked = False
         If BottomTimeZoneMenuItem.Checked Then BottomTimeZoneMenuItem.Checked = False
         If BottomTimeZoneCityMenuItem.Checked Then BottomTimeZoneCityMenuItem.Checked = False
-        'If TopLocalTimeMenuItem.Checked Then TopLocalTimeMenuItem.Checked = False
+        If BottomLocalTimeMenuItem.Checked Then BottomLocalTimeMenuItem.Checked = False
 
 
 
@@ -639,7 +639,7 @@ Public Class Form1
         If BottomMediumDateMenuItem.Checked Then BottomMediumDateMenuItem.Checked = False
         If BottomTimeZoneMenuItem.Checked Then BottomTimeZoneMenuItem.Checked = False
         If BottomTimeZoneCityMenuItem.Checked Then BottomTimeZoneCityMenuItem.Checked = False
-        'If TopLocalTimeMenuItem.Checked Then TopLocalTimeMenuItem.Checked = False
+        If BottomLocalTimeMenuItem.Checked Then BottomLocalTimeMenuItem.Checked = False
 
 
 
@@ -659,7 +659,7 @@ Public Class Form1
         If BottomMediumDateMenuItem.Checked Then BottomMediumDateMenuItem.Checked = False
         If BottomShortDateMenuItem.Checked Then BottomShortDateMenuItem.Checked = False
         If BottomTimeZoneCityMenuItem.Checked Then BottomTimeZoneCityMenuItem.Checked = False
-        'If TopLocalTimeMenuItem.Checked Then TopLocalTimeMenuItem.Checked = False
+        If BottomLocalTimeMenuItem.Checked Then BottomLocalTimeMenuItem.Checked = False
 
 
 
@@ -680,13 +680,34 @@ Public Class Form1
         If BottomMediumDateMenuItem.Checked Then BottomMediumDateMenuItem.Checked = False
         If BottomShortDateMenuItem.Checked Then BottomShortDateMenuItem.Checked = False
         If BottomTimeZoneMenuItem.Checked Then BottomTimeZoneMenuItem.Checked = False
-        'If TopLocalTimeMenuItem.Checked Then TopLocalTimeMenuItem.Checked = False
+        If BottomLocalTimeMenuItem.Checked Then BottomLocalTimeMenuItem.Checked = False
 
 
 
 
     End Sub
 
+    Private Sub BottomLocalTimeMenuItem_Click(sender As Object, e As EventArgs) Handles BottomLocalTimeMenuItem.Click
+
+        If Not BottomDisplay.info = InfoType.LocalTime Then BottomDisplay.info = InfoType.LocalTime
+
+        If Not BottomLocalTimeMenuItem.Checked Then BottomLocalTimeMenuItem.Checked = True
+
+        ' Uncheck the other menu options
+        If BottomDayMenuItem.Checked Then BottomDayMenuItem.Checked = False
+        If BottomShortDayMenuItem.Checked Then BottomShortDayMenuItem.Checked = False
+        If BottomLongDateMenuItem.Checked Then BottomLongDateMenuItem.Checked = False
+        If BottomMediumDateMenuItem.Checked Then BottomMediumDateMenuItem.Checked = False
+        If BottomShortDateMenuItem.Checked Then BottomShortDateMenuItem.Checked = False
+        If BottomTimeZoneMenuItem.Checked Then BottomTimeZoneMenuItem.Checked = False
+        If BottomTimeZoneCityMenuItem.Checked Then BottomTimeZoneCityMenuItem.Checked = False
+
+
+
+
+
+
+    End Sub
 
 
 
