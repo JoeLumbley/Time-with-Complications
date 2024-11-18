@@ -28,15 +28,13 @@ Public Class Form1
 
     Private Context As BufferedGraphicsContext
     Private Buffer As BufferedGraphics
-    Private TimeZone As String
-
-
-    Private TimeZoneCity As String
 
     Private Enum HourFormat
         Twelve
         TwentyFour
     End Enum
+
+    Private Hours As HourFormat = HourFormat.Twelve
 
     Private Enum InfoType
         Time
@@ -50,14 +48,11 @@ Public Class Form1
         LocalTime
     End Enum
 
-    Private Hours As HourFormat = HourFormat.Twelve
-
     Private Structure DisplayObject
-        Public location As Point
-        Public text As String
-        Public font As Font
-        Public info As InfoType
-
+        Public Location As Point
+        Public Text As String
+        Public Font As Font
+        Public Info As InfoType
     End Structure
 
     Private MainDisplay As DisplayObject
@@ -72,9 +67,9 @@ Public Class Form1
 
         InitializeBuffer()
 
-        TopDisplay.info = InfoType.LongDayOfWeek
+        TopDisplay.Info = InfoType.LongDayOfWeek
 
-        BottomDisplay.info = InfoType.MedDate
+        BottomDisplay.Info = InfoType.MedDate
 
         Timer1.Interval = 20
 
@@ -89,147 +84,142 @@ Public Class Form1
         If Hours = HourFormat.Twelve Then
 
             ' Formats the current time to 12-hour (Regular Time)
-            MainDisplay.text = Now.ToLocalTime.ToShortTimeString()
+            MainDisplay.Text = Now.ToLocalTime.ToShortTimeString()
 
         Else
 
             ' Formats the current time to 24-hour (Military Time)
-            MainDisplay.text = Now.ToLocalTime.ToString("HH:mm")
+            MainDisplay.Text = Now.ToLocalTime.ToString("HH:mm")
 
         End If
 
-        Select Case TopDisplay.info
+        Select Case TopDisplay.Info
 
             Case InfoType.LongDayOfWeek
 
-                TopDisplay.text = Now.DayOfWeek.ToString
+                TopDisplay.Text = Now.DayOfWeek.ToString
 
             Case InfoType.ShortDayOfWeek
 
                 Select Case Now.DayOfWeek
                     Case DayOfWeek.Sunday
-                        TopDisplay.text = "Sun"
+                        TopDisplay.Text = "Sun"
                     Case DayOfWeek.Monday
-                        TopDisplay.text = "Mon"
+                        TopDisplay.Text = "Mon"
                     Case DayOfWeek.Tuesday
-                        TopDisplay.text = "Tue"
+                        TopDisplay.Text = "Tue"
                     Case DayOfWeek.Wednesday
-                        TopDisplay.text = "Wed"
+                        TopDisplay.Text = "Wed"
                     Case DayOfWeek.Thursday
-                        TopDisplay.text = "Thu"
+                        TopDisplay.Text = "Thu"
                     Case DayOfWeek.Friday
-                        TopDisplay.text = "Fri"
+                        TopDisplay.Text = "Fri"
                     Case DayOfWeek.Saturday
-                        TopDisplay.text = "Sat"
+                        TopDisplay.Text = "Sat"
                 End Select
 
             Case InfoType.LongDate
 
-                TopDisplay.text = Now.ToLongDateString
+                TopDisplay.Text = Now.ToLongDateString
 
             Case InfoType.MedDate
 
-                TopDisplay.text = Now.ToString("MMMM d, yyyy")
+                TopDisplay.Text = Now.ToString("MMMM d, yyyy")
 
             Case InfoType.ShortDate
 
-                TopDisplay.text = Now.ToShortDateString
+                TopDisplay.Text = Now.ToShortDateString
 
             Case InfoType.TimeZone
 
-                TopDisplay.text = TimeZoneInfo.Local.Id
+                TopDisplay.Text = TimeZoneInfo.Local.Id
 
             Case InfoType.TimeZoneCity
 
                 Select Case TimeZoneInfo.Local.Id
                     Case "Eastern Standard Time"
-                        TimeZoneCity = "New York"
+                        TopDisplay.Text = "New York"
                     Case "Central Standard Time"
-                        TimeZoneCity = "Chicago"
+                        TopDisplay.Text = "Chicago"
                     Case "Mountain Standard Time"
-                        TimeZoneCity = "Denver"
+                        TopDisplay.Text = "Denver"
                     Case "Pacific Standard Time"
-                        TimeZoneCity = "Los Angeles"
+                        TopDisplay.Text = "Los Angeles"
                     Case Else
-                        TimeZoneCity = "Unknown"
+                        TopDisplay.Text = "Unknown"
                 End Select
-
-                TopDisplay.text = TimeZoneCity
 
             Case InfoType.LocalTime
 
-                TopDisplay.text = "Local Time"
+                TopDisplay.Text = "Local Time"
 
         End Select
 
-        Select Case BottomDisplay.info
+        Select Case BottomDisplay.Info
 
             Case InfoType.LongDayOfWeek
 
-                BottomDisplay.text = Now.DayOfWeek.ToString
+                BottomDisplay.Text = Now.DayOfWeek.ToString
 
             Case InfoType.ShortDayOfWeek
 
                 Select Case Now.DayOfWeek
                     Case DayOfWeek.Sunday
-                        BottomDisplay.text = "Sun"
+                        BottomDisplay.Text = "Sun"
                     Case DayOfWeek.Monday
-                        BottomDisplay.text = "Mon"
+                        BottomDisplay.Text = "Mon"
                     Case DayOfWeek.Tuesday
-                        BottomDisplay.text = "Tue"
+                        BottomDisplay.Text = "Tue"
                     Case DayOfWeek.Wednesday
-                        BottomDisplay.text = "Wed"
+                        BottomDisplay.Text = "Wed"
                     Case DayOfWeek.Thursday
-                        BottomDisplay.text = "Thu"
+                        BottomDisplay.Text = "Thu"
                     Case DayOfWeek.Friday
-                        BottomDisplay.text = "Fri"
+                        BottomDisplay.Text = "Fri"
                     Case DayOfWeek.Saturday
-                        BottomDisplay.text = "Sat"
+                        BottomDisplay.Text = "Sat"
                 End Select
 
             Case InfoType.LongDate
 
-                BottomDisplay.text = Now.ToLongDateString
+                BottomDisplay.Text = Now.ToLongDateString
 
             Case InfoType.MedDate
 
-                BottomDisplay.text = Now.ToString("MMMM d, yyyy")
+                BottomDisplay.Text = Now.ToString("MMMM d, yyyy")
 
             Case InfoType.ShortDate
 
-                BottomDisplay.text = Now.ToShortDateString
+                BottomDisplay.Text = Now.ToShortDateString
 
             Case InfoType.TimeZone
 
-                BottomDisplay.text = TimeZoneInfo.Local.Id
+                BottomDisplay.Text = TimeZoneInfo.Local.Id
 
             Case InfoType.TimeZoneCity
 
                 Select Case TimeZoneInfo.Local.Id
                     Case "Eastern Standard Time"
-                        TimeZoneCity = "New York"
+                        BottomDisplay.Text = "New York"
                     Case "Central Standard Time"
-                        TimeZoneCity = "Chicago"
+                        BottomDisplay.Text = "Chicago"
                     Case "Mountain Standard Time"
-                        TimeZoneCity = "Denver"
+                        BottomDisplay.Text = "Denver"
                     Case "Pacific Standard Time"
-                        TimeZoneCity = "Los Angeles"
+                        BottomDisplay.Text = "Los Angeles"
                     Case Else
-                        TimeZoneCity = "Unknown"
+                        BottomDisplay.Text = "Unknown"
                 End Select
-
-                BottomDisplay.text = TimeZoneCity
 
             Case InfoType.LocalTime
 
-                BottomDisplay.text = "Local Time"
+                BottomDisplay.Text = "Local Time"
 
         End Select
 
         If Not WindowState = FormWindowState.Minimized Then
 
             Refresh() ' Calls OnPaint Sub
-
 
         End If
 
@@ -241,27 +231,27 @@ Public Class Form1
 
             ' Set the font size for the main display based on the width of the client rectangle
             Dim FontSize As Integer = ClientSize.Width \ 14
-            MainDisplay.font = New Font("Segoe UI", FontSize, FontStyle.Regular)
+            MainDisplay.Font = New Font("Segoe UI", FontSize, FontStyle.Regular)
 
             ' Center the main display in the client rectangle.
-            MainDisplay.location.X = ClientSize.Width \ 2
-            MainDisplay.location.Y = (ClientSize.Height + MenuStrip1.Height) \ 2
+            MainDisplay.Location.X = ClientSize.Width \ 2
+            MainDisplay.Location.Y = (ClientSize.Height + MenuStrip1.Height) \ 2
 
             ' Set the font size for the top display based on the width of the client rectangle
             FontSize = ClientSize.Width \ 41
-            TopDisplay.font = New Font("Segoe UI", FontSize, FontStyle.Regular)
+            TopDisplay.Font = New Font("Segoe UI", FontSize, FontStyle.Regular)
 
             ' Center the top display in the client rectangle above the main display.
-            TopDisplay.location.X = ClientSize.Width \ 2
-            TopDisplay.location.Y = (ClientSize.Height + MenuStrip1.Height) \ 2 - ClientSize.Width \ 10
+            TopDisplay.Location.X = ClientSize.Width \ 2
+            TopDisplay.Location.Y = (ClientSize.Height + MenuStrip1.Height) \ 2 - ClientSize.Width \ 10
 
             ' Set the font size for the bottom display based on the width of the client rectangle
             'FontSize = ClientSize.Width \ 39
-            BottomDisplay.font = New Font("Segoe UI", FontSize, FontStyle.Regular)
+            BottomDisplay.Font = New Font("Segoe UI", FontSize, FontStyle.Regular)
 
             ' Center the bottom display in the client rectangle below the main display.
-            BottomDisplay.location.X = ClientSize.Width \ 2
-            BottomDisplay.location.Y = (ClientSize.Height + MenuStrip1.Height) \ 2 + ClientSize.Width \ 10
+            BottomDisplay.Location.X = ClientSize.Width \ 2
+            BottomDisplay.Location.Y = (ClientSize.Height + MenuStrip1.Height) \ 2 + ClientSize.Width \ 10
 
             ' Dispose of the existing buffer
             If Buffer IsNot Nothing Then
@@ -309,11 +299,11 @@ Public Class Form1
                     .PixelOffsetMode = Drawing2D.PixelOffsetMode.None
                     .CompositingQuality = Drawing2D.CompositingQuality.HighQuality
 
-                    .DrawString(MainDisplay.text, MainDisplay.font, Brushes.White, MainDisplay.location, AlineCenterMiddle)
+                    .DrawString(MainDisplay.Text, MainDisplay.Font, Brushes.White, MainDisplay.Location, AlineCenterMiddle)
 
-                    .DrawString(TopDisplay.text, TopDisplay.font, Brushes.LightGray, TopDisplay.location, AlineCenterMiddle)
+                    .DrawString(TopDisplay.Text, TopDisplay.Font, Brushes.LightGray, TopDisplay.Location, AlineCenterMiddle)
 
-                    .DrawString(BottomDisplay.text, BottomDisplay.font, Brushes.LightGray, BottomDisplay.location, AlineCenterMiddle)
+                    .DrawString(BottomDisplay.Text, BottomDisplay.Font, Brushes.LightGray, BottomDisplay.Location, AlineCenterMiddle)
 
                 End With
 
@@ -383,7 +373,7 @@ Public Class Form1
 
     Private Sub TopDayMenuItem_Click(sender As Object, e As EventArgs) Handles TopDayMenuItem.Click
 
-        If Not TopDisplay.info = InfoType.LongDayOfWeek Then TopDisplay.info = InfoType.LongDayOfWeek
+        If Not TopDisplay.Info = InfoType.LongDayOfWeek Then TopDisplay.Info = InfoType.LongDayOfWeek
 
         If Not TopDayMenuItem.Checked Then TopDayMenuItem.Checked = True
 
@@ -400,7 +390,7 @@ Public Class Form1
 
     Private Sub TopShortDayMenuItem_Click(sender As Object, e As EventArgs) Handles TopShortDayMenuItem.Click
 
-        If Not TopDisplay.info = InfoType.ShortDayOfWeek Then TopDisplay.info = InfoType.ShortDayOfWeek
+        If Not TopDisplay.Info = InfoType.ShortDayOfWeek Then TopDisplay.Info = InfoType.ShortDayOfWeek
 
         If Not TopShortDayMenuItem.Checked Then TopShortDayMenuItem.Checked = True
 
@@ -417,7 +407,7 @@ Public Class Form1
 
     Private Sub TopLongDateMenuItem_Click(sender As Object, e As EventArgs) Handles TopLongDateMenuItem.Click
 
-        If Not TopDisplay.info = InfoType.LongDate Then TopDisplay.info = InfoType.LongDate
+        If Not TopDisplay.Info = InfoType.LongDate Then TopDisplay.Info = InfoType.LongDate
 
         If Not TopLongDateMenuItem.Checked Then TopLongDateMenuItem.Checked = True
 
@@ -434,7 +424,7 @@ Public Class Form1
 
     Private Sub TopMedDateMenuItem_Click(sender As Object, e As EventArgs) Handles TopMedDateMenuItem.Click
 
-        If Not TopDisplay.info = InfoType.MedDate Then TopDisplay.info = InfoType.MedDate
+        If Not TopDisplay.Info = InfoType.MedDate Then TopDisplay.Info = InfoType.MedDate
 
         If Not TopMedDateMenuItem.Checked Then TopMedDateMenuItem.Checked = True
 
@@ -451,7 +441,7 @@ Public Class Form1
 
     Private Sub TopShortDateMenuItem_Click(sender As Object, e As EventArgs) Handles TopShortDateMenuItem.Click
 
-        If Not TopDisplay.info = InfoType.ShortDate Then TopDisplay.info = InfoType.ShortDate
+        If Not TopDisplay.Info = InfoType.ShortDate Then TopDisplay.Info = InfoType.ShortDate
 
         If Not TopShortDateMenuItem.Checked Then TopShortDateMenuItem.Checked = True
 
@@ -468,7 +458,7 @@ Public Class Form1
 
     Private Sub TopTimeZoneMenuItem_Click(sender As Object, e As EventArgs) Handles TopTimeZoneMenuItem.Click
 
-        If Not TopDisplay.info = InfoType.TimeZone Then TopDisplay.info = InfoType.TimeZone
+        If Not TopDisplay.Info = InfoType.TimeZone Then TopDisplay.Info = InfoType.TimeZone
 
         If Not TopTimeZoneMenuItem.Checked Then TopTimeZoneMenuItem.Checked = True
 
@@ -485,7 +475,7 @@ Public Class Form1
 
     Private Sub TopTimeZoneCityMenuItem_Click(sender As Object, e As EventArgs) Handles TopTimeZoneCityMenuItem.Click
 
-        If Not TopDisplay.info = InfoType.TimeZoneCity Then TopDisplay.info = InfoType.TimeZoneCity
+        If Not TopDisplay.Info = InfoType.TimeZoneCity Then TopDisplay.Info = InfoType.TimeZoneCity
 
         If Not TopTimeZoneCityMenuItem.Checked Then TopTimeZoneCityMenuItem.Checked = True
 
@@ -502,7 +492,7 @@ Public Class Form1
 
     Private Sub TopLocalTimeMenuItem_Click(sender As Object, e As EventArgs) Handles TopLocalTimeMenuItem.Click
 
-        If Not TopDisplay.info = InfoType.LocalTime Then TopDisplay.info = InfoType.LocalTime
+        If Not TopDisplay.Info = InfoType.LocalTime Then TopDisplay.Info = InfoType.LocalTime
 
         If Not TopLocalTimeMenuItem.Checked Then TopLocalTimeMenuItem.Checked = True
 
@@ -519,7 +509,7 @@ Public Class Form1
 
     Private Sub BottomDayMenuItem_Click(sender As Object, e As EventArgs) Handles BottomDayMenuItem.Click
 
-        If Not BottomDisplay.info = InfoType.LongDayOfWeek Then BottomDisplay.info = InfoType.LongDayOfWeek
+        If Not BottomDisplay.Info = InfoType.LongDayOfWeek Then BottomDisplay.Info = InfoType.LongDayOfWeek
 
         If Not BottomDayMenuItem.Checked Then BottomDayMenuItem.Checked = True
 
@@ -536,7 +526,7 @@ Public Class Form1
 
     Private Sub BottomShortDayMenuItem_Click(sender As Object, e As EventArgs) Handles BottomShortDayMenuItem.Click
 
-        If Not BottomDisplay.info = InfoType.ShortDayOfWeek Then BottomDisplay.info = InfoType.ShortDayOfWeek
+        If Not BottomDisplay.Info = InfoType.ShortDayOfWeek Then BottomDisplay.Info = InfoType.ShortDayOfWeek
 
         If Not BottomShortDayMenuItem.Checked Then BottomShortDayMenuItem.Checked = True
 
@@ -553,7 +543,7 @@ Public Class Form1
 
     Private Sub BottomLongDateMenuItem_Click(sender As Object, e As EventArgs) Handles BottomLongDateMenuItem.Click
 
-        If Not BottomDisplay.info = InfoType.LongDate Then BottomDisplay.info = InfoType.LongDate
+        If Not BottomDisplay.Info = InfoType.LongDate Then BottomDisplay.Info = InfoType.LongDate
 
         If Not BottomLongDateMenuItem.Checked Then BottomLongDateMenuItem.Checked = True
 
@@ -570,7 +560,7 @@ Public Class Form1
 
     Private Sub BottomMediumDateMenuItem_Click(sender As Object, e As EventArgs) Handles BottomMediumDateMenuItem.Click
 
-        If Not BottomDisplay.info = InfoType.MedDate Then BottomDisplay.info = InfoType.MedDate
+        If Not BottomDisplay.Info = InfoType.MedDate Then BottomDisplay.Info = InfoType.MedDate
 
         If Not BottomMediumDateMenuItem.Checked Then BottomMediumDateMenuItem.Checked = True
 
@@ -587,7 +577,7 @@ Public Class Form1
 
     Private Sub BottomShortDateMenuItem_Click(sender As Object, e As EventArgs) Handles BottomShortDateMenuItem.Click
 
-        If Not BottomDisplay.info = InfoType.ShortDate Then BottomDisplay.info = InfoType.ShortDate
+        If Not BottomDisplay.Info = InfoType.ShortDate Then BottomDisplay.Info = InfoType.ShortDate
 
         If Not BottomShortDateMenuItem.Checked Then BottomShortDateMenuItem.Checked = True
 
@@ -604,7 +594,7 @@ Public Class Form1
 
     Private Sub BottomTimeZoneMenuItem_Click(sender As Object, e As EventArgs) Handles BottomTimeZoneMenuItem.Click
 
-        If Not BottomDisplay.info = InfoType.TimeZone Then BottomDisplay.info = InfoType.TimeZone
+        If Not BottomDisplay.Info = InfoType.TimeZone Then BottomDisplay.Info = InfoType.TimeZone
 
         If Not BottomTimeZoneMenuItem.Checked Then BottomTimeZoneMenuItem.Checked = True
 
@@ -621,7 +611,7 @@ Public Class Form1
 
     Private Sub BottomTimeZoneCityMenuItem_Click(sender As Object, e As EventArgs) Handles BottomTimeZoneCityMenuItem.Click
 
-        If Not BottomDisplay.info = InfoType.TimeZoneCity Then BottomDisplay.info = InfoType.TimeZoneCity
+        If Not BottomDisplay.Info = InfoType.TimeZoneCity Then BottomDisplay.Info = InfoType.TimeZoneCity
 
         If Not BottomTimeZoneCityMenuItem.Checked Then BottomTimeZoneCityMenuItem.Checked = True
 
@@ -638,7 +628,7 @@ Public Class Form1
 
     Private Sub BottomLocalTimeMenuItem_Click(sender As Object, e As EventArgs) Handles BottomLocalTimeMenuItem.Click
 
-        If Not BottomDisplay.info = InfoType.LocalTime Then BottomDisplay.info = InfoType.LocalTime
+        If Not BottomDisplay.Info = InfoType.LocalTime Then BottomDisplay.Info = InfoType.LocalTime
 
         If Not BottomLocalTimeMenuItem.Checked Then BottomLocalTimeMenuItem.Checked = True
 
@@ -653,4 +643,6 @@ Public Class Form1
 
     End Sub
 
+
 End Class
+
