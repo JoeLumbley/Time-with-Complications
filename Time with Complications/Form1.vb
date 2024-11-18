@@ -46,6 +46,7 @@ Public Class Form1
         TimeZone
         TimeZoneCity
         LocalTime
+        MilitaryDate
     End Enum
 
     Private Structure DisplayObject
@@ -130,6 +131,10 @@ Public Class Form1
 
                 TopDisplay.Text = Now.ToShortDateString
 
+            Case InfoType.MilitaryDate
+
+                TopDisplay.Text = Now.ToString("ddMMMyy").ToUpper()
+
             Case InfoType.TimeZone
 
                 TopDisplay.Text = TimeZoneInfo.Local.Id
@@ -199,6 +204,10 @@ Public Class Form1
             Case InfoType.ShortDate
 
                 BottomDisplay.Text = Now.ToShortDateString
+
+            Case InfoType.MilitaryDate
+
+                BottomDisplay.Text = Now.ToString("ddMMMyy").ToUpper()
 
             Case InfoType.TimeZone
 
@@ -401,6 +410,7 @@ Public Class Form1
         If TopTimeZoneMenuItem.Checked Then TopTimeZoneMenuItem.Checked = False
         If TopTimeZoneCityMenuItem.Checked Then TopTimeZoneCityMenuItem.Checked = False
         If TopLocalTimeMenuItem.Checked Then TopLocalTimeMenuItem.Checked = False
+        If TopMilitaryDateMenuItem.Checked Then TopMilitaryDateMenuItem.Checked = False
 
     End Sub
 
@@ -418,6 +428,7 @@ Public Class Form1
         If TopTimeZoneMenuItem.Checked Then TopTimeZoneMenuItem.Checked = False
         If TopTimeZoneCityMenuItem.Checked Then TopTimeZoneCityMenuItem.Checked = False
         If TopLocalTimeMenuItem.Checked Then TopLocalTimeMenuItem.Checked = False
+        If TopMilitaryDateMenuItem.Checked Then TopMilitaryDateMenuItem.Checked = False
 
     End Sub
 
@@ -435,6 +446,7 @@ Public Class Form1
         If TopTimeZoneMenuItem.Checked Then TopTimeZoneMenuItem.Checked = False
         If TopTimeZoneCityMenuItem.Checked Then TopTimeZoneCityMenuItem.Checked = False
         If TopLocalTimeMenuItem.Checked Then TopLocalTimeMenuItem.Checked = False
+        If TopMilitaryDateMenuItem.Checked Then TopMilitaryDateMenuItem.Checked = False
 
     End Sub
 
@@ -452,6 +464,7 @@ Public Class Form1
         If TopTimeZoneMenuItem.Checked Then TopTimeZoneMenuItem.Checked = False
         If TopTimeZoneCityMenuItem.Checked Then TopTimeZoneCityMenuItem.Checked = False
         If TopLocalTimeMenuItem.Checked Then TopLocalTimeMenuItem.Checked = False
+        If TopMilitaryDateMenuItem.Checked Then TopMilitaryDateMenuItem.Checked = False
 
     End Sub
 
@@ -469,6 +482,7 @@ Public Class Form1
         If TopTimeZoneMenuItem.Checked Then TopTimeZoneMenuItem.Checked = False
         If TopTimeZoneCityMenuItem.Checked Then TopTimeZoneCityMenuItem.Checked = False
         If TopLocalTimeMenuItem.Checked Then TopLocalTimeMenuItem.Checked = False
+        If TopMilitaryDateMenuItem.Checked Then TopMilitaryDateMenuItem.Checked = False
 
     End Sub
 
@@ -486,6 +500,7 @@ Public Class Form1
         If TopShortDateMenuItem.Checked Then TopShortDateMenuItem.Checked = False
         If TopTimeZoneCityMenuItem.Checked Then TopTimeZoneCityMenuItem.Checked = False
         If TopLocalTimeMenuItem.Checked Then TopLocalTimeMenuItem.Checked = False
+        If TopMilitaryDateMenuItem.Checked Then TopMilitaryDateMenuItem.Checked = False
 
     End Sub
 
@@ -503,6 +518,7 @@ Public Class Form1
         If TopShortDateMenuItem.Checked Then TopShortDateMenuItem.Checked = False
         If TopTimeZoneMenuItem.Checked Then TopTimeZoneMenuItem.Checked = False
         If TopLocalTimeMenuItem.Checked Then TopLocalTimeMenuItem.Checked = False
+        If TopMilitaryDateMenuItem.Checked Then TopMilitaryDateMenuItem.Checked = False
 
     End Sub
 
@@ -520,8 +536,42 @@ Public Class Form1
         If TopShortDateMenuItem.Checked Then TopShortDateMenuItem.Checked = False
         If TopTimeZoneMenuItem.Checked Then TopTimeZoneMenuItem.Checked = False
         If TopTimeZoneCityMenuItem.Checked Then TopTimeZoneCityMenuItem.Checked = False
+        If TopMilitaryDateMenuItem.Checked Then TopMilitaryDateMenuItem.Checked = False
 
     End Sub
+
+    Private Sub TopMilitaryDateMenuItem_Click(sender As Object, e As EventArgs) Handles TopMilitaryDateMenuItem.Click
+
+        If Not TopDisplay.Type = InfoType.MilitaryDate Then TopDisplay.Type = InfoType.MilitaryDate
+
+        If Not TopMilitaryDateMenuItem.Checked Then TopMilitaryDateMenuItem.Checked = True
+
+        ' Uncheck the other menu options
+        If TopDayMenuItem.Checked Then TopDayMenuItem.Checked = False
+        If TopShortDayMenuItem.Checked Then TopShortDayMenuItem.Checked = False
+        If TopLongDateMenuItem.Checked Then TopLongDateMenuItem.Checked = False
+        If TopMedDateMenuItem.Checked Then TopMedDateMenuItem.Checked = False
+        If TopShortDateMenuItem.Checked Then TopShortDateMenuItem.Checked = False
+        If TopTimeZoneMenuItem.Checked Then TopTimeZoneMenuItem.Checked = False
+        If TopTimeZoneCityMenuItem.Checked Then TopTimeZoneCityMenuItem.Checked = False
+        If TopLocalTimeMenuItem.Checked Then TopLocalTimeMenuItem.Checked = False
+
+    End Sub
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     Private Sub BottomDayMenuItem_Click(sender As Object, e As EventArgs) Handles BottomDayMenuItem.Click
 
@@ -537,6 +587,7 @@ Public Class Form1
         If BottomTimeZoneMenuItem.Checked Then BottomTimeZoneMenuItem.Checked = False
         If BottomTimeZoneCityMenuItem.Checked Then BottomTimeZoneCityMenuItem.Checked = False
         If BottomLocalTimeMenuItem.Checked Then BottomLocalTimeMenuItem.Checked = False
+        If BottomMilitaryDateMenuItem.Checked Then BottomMilitaryDateMenuItem.Checked = False
 
     End Sub
 
@@ -554,6 +605,7 @@ Public Class Form1
         If BottomTimeZoneMenuItem.Checked Then BottomTimeZoneMenuItem.Checked = False
         If BottomTimeZoneCityMenuItem.Checked Then BottomTimeZoneCityMenuItem.Checked = False
         If BottomLocalTimeMenuItem.Checked Then BottomLocalTimeMenuItem.Checked = False
+        If BottomMilitaryDateMenuItem.Checked Then BottomMilitaryDateMenuItem.Checked = False
 
     End Sub
 
@@ -571,6 +623,7 @@ Public Class Form1
         If BottomTimeZoneMenuItem.Checked Then BottomTimeZoneMenuItem.Checked = False
         If BottomTimeZoneCityMenuItem.Checked Then BottomTimeZoneCityMenuItem.Checked = False
         If BottomLocalTimeMenuItem.Checked Then BottomLocalTimeMenuItem.Checked = False
+        If BottomMilitaryDateMenuItem.Checked Then BottomMilitaryDateMenuItem.Checked = False
 
     End Sub
 
@@ -588,6 +641,7 @@ Public Class Form1
         If BottomTimeZoneMenuItem.Checked Then BottomTimeZoneMenuItem.Checked = False
         If BottomTimeZoneCityMenuItem.Checked Then BottomTimeZoneCityMenuItem.Checked = False
         If BottomLocalTimeMenuItem.Checked Then BottomLocalTimeMenuItem.Checked = False
+        If BottomMilitaryDateMenuItem.Checked Then BottomMilitaryDateMenuItem.Checked = False
 
     End Sub
 
@@ -605,6 +659,7 @@ Public Class Form1
         If BottomTimeZoneMenuItem.Checked Then BottomTimeZoneMenuItem.Checked = False
         If BottomTimeZoneCityMenuItem.Checked Then BottomTimeZoneCityMenuItem.Checked = False
         If BottomLocalTimeMenuItem.Checked Then BottomLocalTimeMenuItem.Checked = False
+        If BottomMilitaryDateMenuItem.Checked Then BottomMilitaryDateMenuItem.Checked = False
 
     End Sub
 
@@ -622,6 +677,7 @@ Public Class Form1
         If BottomShortDateMenuItem.Checked Then BottomShortDateMenuItem.Checked = False
         If BottomTimeZoneCityMenuItem.Checked Then BottomTimeZoneCityMenuItem.Checked = False
         If BottomLocalTimeMenuItem.Checked Then BottomLocalTimeMenuItem.Checked = False
+        If BottomMilitaryDateMenuItem.Checked Then BottomMilitaryDateMenuItem.Checked = False
 
     End Sub
 
@@ -639,6 +695,7 @@ Public Class Form1
         If BottomShortDateMenuItem.Checked Then BottomShortDateMenuItem.Checked = False
         If BottomTimeZoneMenuItem.Checked Then BottomTimeZoneMenuItem.Checked = False
         If BottomLocalTimeMenuItem.Checked Then BottomLocalTimeMenuItem.Checked = False
+        If BottomMilitaryDateMenuItem.Checked Then BottomMilitaryDateMenuItem.Checked = False
 
     End Sub
 
@@ -656,8 +713,31 @@ Public Class Form1
         If BottomShortDateMenuItem.Checked Then BottomShortDateMenuItem.Checked = False
         If BottomTimeZoneMenuItem.Checked Then BottomTimeZoneMenuItem.Checked = False
         If BottomTimeZoneCityMenuItem.Checked Then BottomTimeZoneCityMenuItem.Checked = False
+        If BottomMilitaryDateMenuItem.Checked Then BottomMilitaryDateMenuItem.Checked = False
 
     End Sub
+
+    Private Sub BottomMilitaryDateMenuItem_Click(sender As Object, e As EventArgs) Handles BottomMilitaryDateMenuItem.Click
+
+        If Not BottomDisplay.Type = InfoType.MilitaryDate Then BottomDisplay.Type = InfoType.MilitaryDate
+
+        If Not BottomMilitaryDateMenuItem.Checked Then BottomMilitaryDateMenuItem.Checked = True
+
+        ' Uncheck the other menu options
+        If BottomDayMenuItem.Checked Then BottomDayMenuItem.Checked = False
+        If BottomShortDayMenuItem.Checked Then BottomShortDayMenuItem.Checked = False
+        If BottomLongDateMenuItem.Checked Then BottomLongDateMenuItem.Checked = False
+        If BottomMediumDateMenuItem.Checked Then BottomMediumDateMenuItem.Checked = False
+        If BottomShortDateMenuItem.Checked Then BottomShortDateMenuItem.Checked = False
+        If BottomTimeZoneMenuItem.Checked Then BottomTimeZoneMenuItem.Checked = False
+        If BottomTimeZoneCityMenuItem.Checked Then BottomTimeZoneCityMenuItem.Checked = False
+        If BottomLocalTimeMenuItem.Checked Then BottomLocalTimeMenuItem.Checked = False
+
+    End Sub
+
+
+
+
 
 
 End Class
