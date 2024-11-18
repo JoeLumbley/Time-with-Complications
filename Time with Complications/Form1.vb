@@ -145,6 +145,14 @@ Public Class Form1
                         TopDisplay.Text = "Denver"
                     Case "Pacific Standard Time"
                         TopDisplay.Text = "Los Angeles"
+                    Case "Alaskan Standard Time"
+                        TopDisplay.Text = "Anchorage"
+                    Case "Hawaiian Standard Time"
+                        TopDisplay.Text = "Honolulu"
+                    Case "Arizona Standard Time"
+                        TopDisplay.Text = "Phoenix"
+                    Case "Atlantic Standard Time"
+                        TopDisplay.Text = "San Juan"
                     Case Else
                         TopDisplay.Text = "Unknown"
                 End Select
@@ -207,6 +215,14 @@ Public Class Form1
                         BottomDisplay.Text = "Denver"
                     Case "Pacific Standard Time"
                         BottomDisplay.Text = "Los Angeles"
+                    Case "Alaskan Standard Time"
+                        BottomDisplay.Text = "Anchorage"
+                    Case "Hawaiian Standard Time"
+                        BottomDisplay.Text = "Honolulu"
+                    Case "Arizona Standard Time"
+                        BottomDisplay.Text = "Phoenix"
+                    Case "Atlantic Standard Time"
+                        BottomDisplay.Text = "San Juan"
                     Case Else
                         BottomDisplay.Text = "Unknown"
                 End Select
