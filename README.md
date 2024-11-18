@@ -16,7 +16,7 @@ This app allows users to switch between 12-hour and 24-hour time formats and cus
 - **Dynamic Time Display**: Shows the current time in either 12-hour or 24-hour format.
 - **Customizable Information**: Users can choose to display different types of information, including:
   - Long or short day of the week
-  - Long, medium, or short date formats
+  - Long, medium, short or military date formats
   - Current time zone and corresponding city
   - Local time
 - **Responsive Design**: The application adjusts to changes in window size, ensuring a consistent user experience.
