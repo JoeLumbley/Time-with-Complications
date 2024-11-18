@@ -52,7 +52,7 @@ Public Class Form1
         Public Location As Point
         Public Text As String
         Public Font As Font
-        Public Info As InfoType
+        Public Type As InfoType
     End Structure
 
     Private MainDisplay As DisplayObject
@@ -67,9 +67,9 @@ Public Class Form1
 
         InitializeBuffer()
 
-        TopDisplay.Info = InfoType.LongDayOfWeek
+        TopDisplay.Type = InfoType.LongDayOfWeek
 
-        BottomDisplay.Info = InfoType.MedDate
+        BottomDisplay.Type = InfoType.MedDate
 
         Timer1.Interval = 20
 
@@ -93,7 +93,7 @@ Public Class Form1
 
         End If
 
-        Select Case TopDisplay.Info
+        Select Case TopDisplay.Type
 
             Case InfoType.LongDayOfWeek
 
@@ -155,7 +155,7 @@ Public Class Form1
 
         End Select
 
-        Select Case BottomDisplay.Info
+        Select Case BottomDisplay.Type
 
             Case InfoType.LongDayOfWeek
 
@@ -373,7 +373,7 @@ Public Class Form1
 
     Private Sub TopDayMenuItem_Click(sender As Object, e As EventArgs) Handles TopDayMenuItem.Click
 
-        If Not TopDisplay.Info = InfoType.LongDayOfWeek Then TopDisplay.Info = InfoType.LongDayOfWeek
+        If Not TopDisplay.Type = InfoType.LongDayOfWeek Then TopDisplay.Type = InfoType.LongDayOfWeek
 
         If Not TopDayMenuItem.Checked Then TopDayMenuItem.Checked = True
 
@@ -390,7 +390,7 @@ Public Class Form1
 
     Private Sub TopShortDayMenuItem_Click(sender As Object, e As EventArgs) Handles TopShortDayMenuItem.Click
 
-        If Not TopDisplay.Info = InfoType.ShortDayOfWeek Then TopDisplay.Info = InfoType.ShortDayOfWeek
+        If Not TopDisplay.Type = InfoType.ShortDayOfWeek Then TopDisplay.Type = InfoType.ShortDayOfWeek
 
         If Not TopShortDayMenuItem.Checked Then TopShortDayMenuItem.Checked = True
 
@@ -407,7 +407,7 @@ Public Class Form1
 
     Private Sub TopLongDateMenuItem_Click(sender As Object, e As EventArgs) Handles TopLongDateMenuItem.Click
 
-        If Not TopDisplay.Info = InfoType.LongDate Then TopDisplay.Info = InfoType.LongDate
+        If Not TopDisplay.Type = InfoType.LongDate Then TopDisplay.Type = InfoType.LongDate
 
         If Not TopLongDateMenuItem.Checked Then TopLongDateMenuItem.Checked = True
 
@@ -424,7 +424,7 @@ Public Class Form1
 
     Private Sub TopMedDateMenuItem_Click(sender As Object, e As EventArgs) Handles TopMedDateMenuItem.Click
 
-        If Not TopDisplay.Info = InfoType.MedDate Then TopDisplay.Info = InfoType.MedDate
+        If Not TopDisplay.Type = InfoType.MedDate Then TopDisplay.Type = InfoType.MedDate
 
         If Not TopMedDateMenuItem.Checked Then TopMedDateMenuItem.Checked = True
 
@@ -441,7 +441,7 @@ Public Class Form1
 
     Private Sub TopShortDateMenuItem_Click(sender As Object, e As EventArgs) Handles TopShortDateMenuItem.Click
 
-        If Not TopDisplay.Info = InfoType.ShortDate Then TopDisplay.Info = InfoType.ShortDate
+        If Not TopDisplay.Type = InfoType.ShortDate Then TopDisplay.Type = InfoType.ShortDate
 
         If Not TopShortDateMenuItem.Checked Then TopShortDateMenuItem.Checked = True
 
@@ -458,7 +458,7 @@ Public Class Form1
 
     Private Sub TopTimeZoneMenuItem_Click(sender As Object, e As EventArgs) Handles TopTimeZoneMenuItem.Click
 
-        If Not TopDisplay.Info = InfoType.TimeZone Then TopDisplay.Info = InfoType.TimeZone
+        If Not TopDisplay.Type = InfoType.TimeZone Then TopDisplay.Type = InfoType.TimeZone
 
         If Not TopTimeZoneMenuItem.Checked Then TopTimeZoneMenuItem.Checked = True
 
@@ -475,7 +475,7 @@ Public Class Form1
 
     Private Sub TopTimeZoneCityMenuItem_Click(sender As Object, e As EventArgs) Handles TopTimeZoneCityMenuItem.Click
 
-        If Not TopDisplay.Info = InfoType.TimeZoneCity Then TopDisplay.Info = InfoType.TimeZoneCity
+        If Not TopDisplay.Type = InfoType.TimeZoneCity Then TopDisplay.Type = InfoType.TimeZoneCity
 
         If Not TopTimeZoneCityMenuItem.Checked Then TopTimeZoneCityMenuItem.Checked = True
 
@@ -492,7 +492,7 @@ Public Class Form1
 
     Private Sub TopLocalTimeMenuItem_Click(sender As Object, e As EventArgs) Handles TopLocalTimeMenuItem.Click
 
-        If Not TopDisplay.Info = InfoType.LocalTime Then TopDisplay.Info = InfoType.LocalTime
+        If Not TopDisplay.Type = InfoType.LocalTime Then TopDisplay.Type = InfoType.LocalTime
 
         If Not TopLocalTimeMenuItem.Checked Then TopLocalTimeMenuItem.Checked = True
 
@@ -509,7 +509,7 @@ Public Class Form1
 
     Private Sub BottomDayMenuItem_Click(sender As Object, e As EventArgs) Handles BottomDayMenuItem.Click
 
-        If Not BottomDisplay.Info = InfoType.LongDayOfWeek Then BottomDisplay.Info = InfoType.LongDayOfWeek
+        If Not BottomDisplay.Type = InfoType.LongDayOfWeek Then BottomDisplay.Type = InfoType.LongDayOfWeek
 
         If Not BottomDayMenuItem.Checked Then BottomDayMenuItem.Checked = True
 
@@ -526,7 +526,7 @@ Public Class Form1
 
     Private Sub BottomShortDayMenuItem_Click(sender As Object, e As EventArgs) Handles BottomShortDayMenuItem.Click
 
-        If Not BottomDisplay.Info = InfoType.ShortDayOfWeek Then BottomDisplay.Info = InfoType.ShortDayOfWeek
+        If Not BottomDisplay.Type = InfoType.ShortDayOfWeek Then BottomDisplay.Type = InfoType.ShortDayOfWeek
 
         If Not BottomShortDayMenuItem.Checked Then BottomShortDayMenuItem.Checked = True
 
@@ -543,7 +543,7 @@ Public Class Form1
 
     Private Sub BottomLongDateMenuItem_Click(sender As Object, e As EventArgs) Handles BottomLongDateMenuItem.Click
 
-        If Not BottomDisplay.Info = InfoType.LongDate Then BottomDisplay.Info = InfoType.LongDate
+        If Not BottomDisplay.Type = InfoType.LongDate Then BottomDisplay.Type = InfoType.LongDate
 
         If Not BottomLongDateMenuItem.Checked Then BottomLongDateMenuItem.Checked = True
 
@@ -560,7 +560,7 @@ Public Class Form1
 
     Private Sub BottomMediumDateMenuItem_Click(sender As Object, e As EventArgs) Handles BottomMediumDateMenuItem.Click
 
-        If Not BottomDisplay.Info = InfoType.MedDate Then BottomDisplay.Info = InfoType.MedDate
+        If Not BottomDisplay.Type = InfoType.MedDate Then BottomDisplay.Type = InfoType.MedDate
 
         If Not BottomMediumDateMenuItem.Checked Then BottomMediumDateMenuItem.Checked = True
 
@@ -577,7 +577,7 @@ Public Class Form1
 
     Private Sub BottomShortDateMenuItem_Click(sender As Object, e As EventArgs) Handles BottomShortDateMenuItem.Click
 
-        If Not BottomDisplay.Info = InfoType.ShortDate Then BottomDisplay.Info = InfoType.ShortDate
+        If Not BottomDisplay.Type = InfoType.ShortDate Then BottomDisplay.Type = InfoType.ShortDate
 
         If Not BottomShortDateMenuItem.Checked Then BottomShortDateMenuItem.Checked = True
 
@@ -594,7 +594,7 @@ Public Class Form1
 
     Private Sub BottomTimeZoneMenuItem_Click(sender As Object, e As EventArgs) Handles BottomTimeZoneMenuItem.Click
 
-        If Not BottomDisplay.Info = InfoType.TimeZone Then BottomDisplay.Info = InfoType.TimeZone
+        If Not BottomDisplay.Type = InfoType.TimeZone Then BottomDisplay.Type = InfoType.TimeZone
 
         If Not BottomTimeZoneMenuItem.Checked Then BottomTimeZoneMenuItem.Checked = True
 
@@ -611,7 +611,7 @@ Public Class Form1
 
     Private Sub BottomTimeZoneCityMenuItem_Click(sender As Object, e As EventArgs) Handles BottomTimeZoneCityMenuItem.Click
 
-        If Not BottomDisplay.Info = InfoType.TimeZoneCity Then BottomDisplay.Info = InfoType.TimeZoneCity
+        If Not BottomDisplay.Type = InfoType.TimeZoneCity Then BottomDisplay.Type = InfoType.TimeZoneCity
 
         If Not BottomTimeZoneCityMenuItem.Checked Then BottomTimeZoneCityMenuItem.Checked = True
 
@@ -628,7 +628,7 @@ Public Class Form1
 
     Private Sub BottomLocalTimeMenuItem_Click(sender As Object, e As EventArgs) Handles BottomLocalTimeMenuItem.Click
 
-        If Not BottomDisplay.Info = InfoType.LocalTime Then BottomDisplay.Info = InfoType.LocalTime
+        If Not BottomDisplay.Type = InfoType.LocalTime Then BottomDisplay.Type = InfoType.LocalTime
 
         If Not BottomLocalTimeMenuItem.Checked Then BottomLocalTimeMenuItem.Checked = True
 
