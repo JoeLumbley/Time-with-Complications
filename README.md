@@ -30,5 +30,6 @@ To run the application, clone the repository and open the solution file in Visua
 
 This project is licensed under the MIT License. See the LICENSE.txt file for more details.
 
+![004](https://github.com/user-attachments/assets/6815610f-826f-4c8b-843a-0e264f401be4)
 
 
