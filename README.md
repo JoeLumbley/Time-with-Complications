@@ -290,7 +290,7 @@ Private Sub UpdateMainDisplay()
 - If `Hours` is set to `HourFormat.Twelve`, this block executes, meaning we will format the time in a 12-hour format.
 
 ```vb
-        TopDisplay.Text = Now.ToShortTimeString()
+        MainDisplay.Text = Now.ToShortTimeString()
 
 
 ```
