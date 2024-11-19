@@ -87,6 +87,49 @@ Public Class Form1
 
     End Sub
 
+    Private Sub Form1_Resize(sender As Object, e As EventArgs) Handles Me.Resize
+
+        If Not WindowState = FormWindowState.Minimized Then
+
+            ' Set the font size for the main display based on the width of the client rectangle
+            Dim FontSize As Integer = ClientSize.Width \ 14
+            MainDisplay.Font = New Font("Segoe UI", FontSize, FontStyle.Regular)
+
+            ' Center the main display in the client rectangle.
+            MainDisplay.Location.X = ClientSize.Width \ 2
+            MainDisplay.Location.Y = (ClientSize.Height + MenuStrip1.Height) \ 2
+
+            ' Set the font size for the top display based on the width of the client rectangle
+            FontSize = ClientSize.Width \ 41
+            TopDisplay.Font = New Font("Segoe UI", FontSize, FontStyle.Regular)
+
+            ' Center the top display in the client rectangle above the main display.
+            TopDisplay.Location.X = ClientSize.Width \ 2
+            TopDisplay.Location.Y = (ClientSize.Height + MenuStrip1.Height) \ 2 - ClientSize.Width \ 10
+
+            ' Set the font size for the bottom display based on the width of the client rectangle
+            'FontSize = ClientSize.Width \ 39
+            BottomDisplay.Font = New Font("Segoe UI", FontSize, FontStyle.Regular)
+
+            ' Center the bottom display in the client rectangle below the main display.
+            BottomDisplay.Location.X = ClientSize.Width \ 2
+            BottomDisplay.Location.Y = (ClientSize.Height + MenuStrip1.Height) \ 2 + ClientSize.Width \ 10
+
+            ' Dispose of the existing buffer
+            If Buffer IsNot Nothing Then
+
+                Buffer.Dispose()
+
+                Buffer = Nothing ' Set to Nothing to avoid using a disposed object
+
+            End If
+
+            ' The buffer will be reallocated in OnPaint
+
+        End If
+
+    End Sub
+
     Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles Timer1.Tick
 
         UpdateDisplays()
@@ -94,6 +137,60 @@ Public Class Form1
         If Not WindowState = FormWindowState.Minimized Then
 
             Refresh() ' Calls OnPaint Sub
+
+        End If
+
+    End Sub
+
+    Protected Overrides Sub OnPaint(ByVal e As PaintEventArgs)
+
+        ' Allocate the buffer if it hasn't been allocated yet
+        If Buffer Is Nothing Then
+
+            Buffer = Context.Allocate(e.Graphics, ClientRectangle)
+
+        End If
+
+        DrawFrame()
+
+        Buffer.Render(e.Graphics)
+
+    End Sub
+
+
+    Private Sub DrawFrame()
+
+        If Buffer IsNot Nothing Then
+
+            Try
+
+                With Buffer.Graphics
+
+                    .Clear(Color.Black)
+
+                    .CompositingMode = Drawing2D.CompositingMode.SourceOver
+                    .TextRenderingHint = Drawing.Text.TextRenderingHint.AntiAlias
+                    .SmoothingMode = Drawing2D.SmoothingMode.HighQuality
+                    .PixelOffsetMode = Drawing2D.PixelOffsetMode.None
+                    .CompositingQuality = Drawing2D.CompositingQuality.HighQuality
+
+                    .DrawString(MainDisplay.Text, MainDisplay.Font, Brushes.White, MainDisplay.Location, AlineCenterMiddle)
+
+                    .DrawString(TopDisplay.Text, TopDisplay.Font, Brushes.LightGray, TopDisplay.Location, AlineCenterMiddle)
+
+                    .DrawString(BottomDisplay.Text, BottomDisplay.Font, Brushes.LightGray, BottomDisplay.Location, AlineCenterMiddle)
+
+                End With
+
+            Catch ex As Exception
+
+                Debug.Print("Draw error: " & ex.Message)
+
+            End Try
+
+        Else
+
+            Debug.Print("Buffer is not initialized.")
 
         End If
 
@@ -208,102 +305,6 @@ Public Class Form1
 
             ' Formats the current time to 24-hour (Military Time)
             MainDisplay.Text = Now.ToLocalTime.ToString("HH:mm")
-
-        End If
-
-    End Sub
-
-    Private Sub Form1_Resize(sender As Object, e As EventArgs) Handles Me.Resize
-
-        If Not WindowState = FormWindowState.Minimized Then
-
-            ' Set the font size for the main display based on the width of the client rectangle
-            Dim FontSize As Integer = ClientSize.Width \ 14
-            MainDisplay.Font = New Font("Segoe UI", FontSize, FontStyle.Regular)
-
-            ' Center the main display in the client rectangle.
-            MainDisplay.Location.X = ClientSize.Width \ 2
-            MainDisplay.Location.Y = (ClientSize.Height + MenuStrip1.Height) \ 2
-
-            ' Set the font size for the top display based on the width of the client rectangle
-            FontSize = ClientSize.Width \ 41
-            TopDisplay.Font = New Font("Segoe UI", FontSize, FontStyle.Regular)
-
-            ' Center the top display in the client rectangle above the main display.
-            TopDisplay.Location.X = ClientSize.Width \ 2
-            TopDisplay.Location.Y = (ClientSize.Height + MenuStrip1.Height) \ 2 - ClientSize.Width \ 10
-
-            ' Set the font size for the bottom display based on the width of the client rectangle
-            'FontSize = ClientSize.Width \ 39
-            BottomDisplay.Font = New Font("Segoe UI", FontSize, FontStyle.Regular)
-
-            ' Center the bottom display in the client rectangle below the main display.
-            BottomDisplay.Location.X = ClientSize.Width \ 2
-            BottomDisplay.Location.Y = (ClientSize.Height + MenuStrip1.Height) \ 2 + ClientSize.Width \ 10
-
-            ' Dispose of the existing buffer
-            If Buffer IsNot Nothing Then
-
-                Buffer.Dispose()
-
-                Buffer = Nothing ' Set to Nothing to avoid using a disposed object
-
-            End If
-
-            ' The buffer will be reallocated in OnPaint
-
-        End If
-
-    End Sub
-
-    Protected Overrides Sub OnPaint(ByVal e As PaintEventArgs)
-
-        ' Allocate the buffer if it hasn't been allocated yet
-        If Buffer Is Nothing Then
-
-            Buffer = Context.Allocate(e.Graphics, ClientRectangle)
-
-        End If
-
-        DrawFrame()
-
-        Buffer.Render(e.Graphics)
-
-    End Sub
-
-    Private Sub DrawFrame()
-
-        If Buffer IsNot Nothing Then
-
-            Try
-
-                With Buffer.Graphics
-
-                    .Clear(Color.Black)
-
-                    .CompositingMode = Drawing2D.CompositingMode.SourceOver
-                    .TextRenderingHint = Drawing.Text.TextRenderingHint.AntiAlias
-                    .SmoothingMode = Drawing2D.SmoothingMode.HighQuality
-                    .PixelOffsetMode = Drawing2D.PixelOffsetMode.None
-                    .CompositingQuality = Drawing2D.CompositingQuality.HighQuality
-
-                    .DrawString(MainDisplay.Text, MainDisplay.Font, Brushes.White, MainDisplay.Location, AlineCenterMiddle)
-
-                    .DrawString(TopDisplay.Text, TopDisplay.Font, Brushes.LightGray, TopDisplay.Location, AlineCenterMiddle)
-
-                    .DrawString(BottomDisplay.Text, BottomDisplay.Font, Brushes.LightGray, BottomDisplay.Location, AlineCenterMiddle)
-
-                End With
-
-            Catch ex As Exception
-
-                Debug.Print("Draw error: " & ex.Message)
-
-            End Try
-
-        Else
-
-            Debug.Print("Buffer is not initialized.")
 
         End If
 
