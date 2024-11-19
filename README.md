@@ -290,7 +290,7 @@ Public Class Form1
 - If `Hours` is set to `HourFormat.Twelve`, this block executes, meaning we will format the time in a 12-hour format.
 
 ```vb
-      MainDisplay.Text = Now.ToShortTimeString()
+        MainDisplay.Text = Now.ToShortTimeString()
 
 
 ```
@@ -302,7 +302,7 @@ Public Class Form1
 - If `Hours` is set to `HourFormat.TwentyFour`, this block executes, meaning we will format the time in a 24-hour format.
 
 ```vb
-      MainDisplay.Text = Now.ToString("HH:mm")
+        MainDisplay.Text = Now.ToString("HH:mm")
 ```
 - This line sets `MainDisplay.Text` to the current time formatted as hours and minutes in 24-hour format (e.g., "15:45").
 
