@@ -266,6 +266,99 @@ Private Sub DrawDisplays()
 ```
 - This draws the main, top, and bottom display texts using their respective fonts and colors.
 
+
+
+
+
+
+
+
+
+
+### UpdateTopDisplay Method Walkthrough
+
+```vb
+Private Sub UpdateTopDisplay()
+```
+- This line defines a new method called `UpdateTopDisplay`. This method is responsible for updating the text displayed in the top display area of the application.
+
+```vb
+    Select Case TopDisplay.Type
+```
+- Here, we start a `Select Case` statement. This allows us to evaluate the `TopDisplay.Type` to determine what kind of information we need to show in the top display.
+
+```vb
+    Case InfoType.LongDayOfWeek
+        TopDisplay.Text = Now.DayOfWeek.ToString
+```
+- If `TopDisplay.Type` is `InfoType.LongDayOfWeek`, this line sets `TopDisplay.Text` to the full name of the current day of the week (e.g., "Monday"). `Now.DayOfWeek` gets the current day, and `ToString` converts it to a readable format.
+
+```vb
+    Case InfoType.ShortDayOfWeek
+        TopDisplay.Text = GetDayOfWeekAbbreviation(Now.DayOfWeek)
+```
+- If `TopDisplay.Type` is `InfoType.ShortDayOfWeek`, this line calls the `GetDayOfWeekAbbreviation` function, passing the current day of the week. This function returns a three-letter abbreviation (e.g., "Mon" for Monday).
+
+```vb
+    Case InfoType.LongDate
+        TopDisplay.Text = Now.ToLongDateString
+```
+- If `TopDisplay.Type` is `InfoType.LongDate`, this line sets `TopDisplay.Text` to the long date format (e.g., "Monday, November 19, 2024") using `Now.ToLongDateString`.
+
+```vb
+    Case InfoType.MedDate
+        TopDisplay.Text = Now.ToString("MMMM d, yyyy")
+```
+- If `TopDisplay.Type` is `InfoType.MedDate`, this line formats the date in a medium style (e.g., "November 19, 2024") and assigns it to `TopDisplay.Text`.
+
+```vb
+    Case InfoType.ShortDate
+        TopDisplay.Text = Now.ToShortDateString
+```
+- If `TopDisplay.Type` is `InfoType.ShortDate`, this line sets `TopDisplay.Text` to a short date format (e.g., "11/19/2024").
+
+```vb
+    Case InfoType.MilitaryDate
+        TopDisplay.Text = Now.ToString("ddMMMyy").ToUpper()
+```
+- If `TopDisplay.Type` is `InfoType.MilitaryDate`, this formats the date in a military style (e.g., "19NOV24") and converts it to uppercase.
+
+```vb
+    Case InfoType.TimeZone
+        TopDisplay.Text = TimeZoneInfo.Local.Id
+```
+- If `TopDisplay.Type` is `InfoType.TimeZone`, this line sets `TopDisplay.Text` to the ID of the local time zone (e.g., "Pacific Standard Time").
+
+```vb
+    Case InfoType.TimeZoneCity
+        TopDisplay.Text = GetTimeZoneCity(TimeZoneInfo.Local.Id)
+```
+- If `TopDisplay.Type` is `InfoType.TimeZoneCity`, this line calls the `GetTimeZoneCity` function, passing the local time zone ID. This function returns the name of a city associated with that time zone (e.g., "Los Angeles" for Pacific Standard Time).
+
+```vb
+    Case InfoType.LocalTime
+        TopDisplay.Text = "Local Time"
+```
+- If `TopDisplay.Type` is `InfoType.LocalTime`, this line simply sets `TopDisplay.Text` to the string "Local Time".
+
+```vb
+    End Select
+End Sub
+```
+- The `End Select` statement closes the `Select Case` block, and `End Sub` marks the end of the `UpdateTopDisplay` method.
+
+
+The `UpdateTopDisplay` method dynamically updates the text displayed in the top section of the application based on the type of information specified in `TopDisplay.Type`. It uses the `Select Case` statement to check the type and assigns the appropriate value to `TopDisplay.Text`. This allows the application to show different types of information, such as the current day, date, or time zone, depending on user preferences. 
+
+
+
+
+
+
+
+
+
+
 ### Update Bottom Display Method
 
 ```vb
