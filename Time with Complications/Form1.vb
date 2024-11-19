@@ -89,99 +89,27 @@ Public Class Form1
 
     Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles Timer1.Tick
 
-        If Hours = HourFormat.Twelve Then
+        UpdateDisplays()
 
-            ' Formats the current time to 12-hour (Regular Time)
-            MainDisplay.Text = Now.ToLocalTime.ToShortTimeString()
+        If Not WindowState = FormWindowState.Minimized Then
 
-        Else
-
-            ' Formats the current time to 24-hour (Military Time)
-            MainDisplay.Text = Now.ToLocalTime.ToString("HH:mm")
+            Refresh() ' Calls OnPaint Sub
 
         End If
 
-        Select Case TopDisplay.Type
+    End Sub
 
-            Case InfoType.LongDayOfWeek
+    Private Sub UpdateDisplays()
 
-                TopDisplay.Text = Now.DayOfWeek.ToString
+        UpdateMainDisplay()
 
-            Case InfoType.ShortDayOfWeek
+        UpdateTopDisplay()
 
-                TopDisplay.Text = GetDayOfWeekAbbreviation(Now.DayOfWeek)
+        UpdateBottomDisplay()
 
+    End Sub
 
-                'Select Case Now.DayOfWeek
-                '    Case DayOfWeek.Sunday
-                '        TopDisplay.Text = "Sun"
-                '    Case DayOfWeek.Monday
-                '        TopDisplay.Text = "Mon"
-                '    Case DayOfWeek.Tuesday
-                '        TopDisplay.Text = "Tue"
-                '    Case DayOfWeek.Wednesday
-                '        TopDisplay.Text = "Wed"
-                '    Case DayOfWeek.Thursday
-                '        TopDisplay.Text = "Thu"
-                '    Case DayOfWeek.Friday
-                '        TopDisplay.Text = "Fri"
-                '    Case DayOfWeek.Saturday
-                '        TopDisplay.Text = "Sat"
-                'End Select
-
-            Case InfoType.LongDate
-
-                TopDisplay.Text = Now.ToLongDateString
-
-            Case InfoType.MedDate
-
-                TopDisplay.Text = Now.ToString("MMMM d, yyyy")
-
-            Case InfoType.ShortDate
-
-                TopDisplay.Text = Now.ToShortDateString
-
-            Case InfoType.MilitaryDate
-
-                TopDisplay.Text = Now.ToString("ddMMMyy").ToUpper()
-
-            Case InfoType.TimeZone
-
-                TopDisplay.Text = TimeZoneInfo.Local.Id
-
-            Case InfoType.TimeZoneCity
-
-                TopDisplay.Text = GetTimeZoneCity(TimeZoneInfo.Local.Id)
-
-
-                'Select Case TimeZoneInfo.Local.Id
-                '    Case "Eastern Standard Time"
-                '        TopDisplay.Text = "New York"
-                '    Case "Central Standard Time"
-                '        TopDisplay.Text = "Chicago"
-                '    Case "Mountain Standard Time"
-                '        TopDisplay.Text = "Denver"
-                '    Case "Pacific Standard Time"
-                '        TopDisplay.Text = "Los Angeles"
-                '    Case "Alaskan Standard Time"
-                '        TopDisplay.Text = "Anchorage"
-                '    Case "Hawaiian Standard Time"
-                '        TopDisplay.Text = "Honolulu"
-                '    Case "Arizona Standard Time"
-                '        TopDisplay.Text = "Phoenix"
-                '    Case "Atlantic Standard Time"
-                '        TopDisplay.Text = "San Juan"
-                '    Case Else
-                '        TopDisplay.Text = "Unknown"
-                'End Select
-
-
-
-            Case InfoType.LocalTime
-
-                TopDisplay.Text = "Local Time"
-
-        End Select
+    Private Sub UpdateBottomDisplay()
 
         Select Case BottomDisplay.Type
 
@@ -192,24 +120,6 @@ Public Class Form1
             Case InfoType.ShortDayOfWeek
 
                 BottomDisplay.Text = GetDayOfWeekAbbreviation(Now.DayOfWeek)
-
-
-                'Select Case Now.DayOfWeek
-                '    Case DayOfWeek.Sunday
-                '        BottomDisplay.Text = "Sun"
-                '    Case DayOfWeek.Monday
-                '        BottomDisplay.Text = "Mon"
-                '    Case DayOfWeek.Tuesday
-                '        BottomDisplay.Text = "Tue"
-                '    Case DayOfWeek.Wednesday
-                '        BottomDisplay.Text = "Wed"
-                '    Case DayOfWeek.Thursday
-                '        BottomDisplay.Text = "Thu"
-                '    Case DayOfWeek.Friday
-                '        BottomDisplay.Text = "Fri"
-                '    Case DayOfWeek.Saturday
-                '        BottomDisplay.Text = "Sat"
-                'End Select
 
             Case InfoType.LongDate
 
@@ -235,37 +145,69 @@ Public Class Form1
 
                 BottomDisplay.Text = GetTimeZoneCity(TimeZoneInfo.Local.Id)
 
-
-                'Select Case TimeZoneInfo.Local.Id
-                '    Case "Eastern Standard Time"
-                '        BottomDisplay.Text = "New York"
-                '    Case "Central Standard Time"
-                '        BottomDisplay.Text = "Chicago"
-                '    Case "Mountain Standard Time"
-                '        BottomDisplay.Text = "Denver"
-                '    Case "Pacific Standard Time"
-                '        BottomDisplay.Text = "Los Angeles"
-                '    Case "Alaskan Standard Time"
-                '        BottomDisplay.Text = "Anchorage"
-                '    Case "Hawaiian Standard Time"
-                '        BottomDisplay.Text = "Honolulu"
-                '    Case "Arizona Standard Time"
-                '        BottomDisplay.Text = "Phoenix"
-                '    Case "Atlantic Standard Time"
-                '        BottomDisplay.Text = "San Juan"
-                '    Case Else
-                '        BottomDisplay.Text = "Unknown"
-                'End Select
-
             Case InfoType.LocalTime
 
                 BottomDisplay.Text = "Local Time"
 
         End Select
 
-        If Not WindowState = FormWindowState.Minimized Then
+    End Sub
 
-            Refresh() ' Calls OnPaint Sub
+    Private Sub UpdateTopDisplay()
+
+        Select Case TopDisplay.Type
+
+            Case InfoType.LongDayOfWeek
+
+                TopDisplay.Text = Now.DayOfWeek.ToString
+
+            Case InfoType.ShortDayOfWeek
+
+                TopDisplay.Text = GetDayOfWeekAbbreviation(Now.DayOfWeek)
+
+            Case InfoType.LongDate
+
+                TopDisplay.Text = Now.ToLongDateString
+
+            Case InfoType.MedDate
+
+                TopDisplay.Text = Now.ToString("MMMM d, yyyy")
+
+            Case InfoType.ShortDate
+
+                TopDisplay.Text = Now.ToShortDateString
+
+            Case InfoType.MilitaryDate
+
+                TopDisplay.Text = Now.ToString("ddMMMyy").ToUpper()
+
+            Case InfoType.TimeZone
+
+                TopDisplay.Text = TimeZoneInfo.Local.Id
+
+            Case InfoType.TimeZoneCity
+
+                TopDisplay.Text = GetTimeZoneCity(TimeZoneInfo.Local.Id)
+
+            Case InfoType.LocalTime
+
+                TopDisplay.Text = "Local Time"
+
+        End Select
+
+    End Sub
+
+    Private Sub UpdateMainDisplay()
+
+        If Hours = HourFormat.Twelve Then
+
+            ' Formats the current time to 12-hour (Regular Time)
+            MainDisplay.Text = Now.ToLocalTime.ToShortTimeString()
+
+        Else
+
+            ' Formats the current time to 24-hour (Military Time)
+            MainDisplay.Text = Now.ToLocalTime.ToString("HH:mm")
 
         End If
 
