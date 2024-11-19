@@ -5,7 +5,7 @@ This application is designed to display the current time, date, and time zone in
 This app allows users to switch between 12-hour and 24-hour time formats and customize the information displayed in the window.
 
 
-![003](https://github.com/user-attachments/assets/464e862b-ac03-464c-acf0-3d03a91bfa64)
+![006](https://github.com/user-attachments/assets/9ece40f3-2d46-46c3-9212-289367262d4f)
 
 
 
