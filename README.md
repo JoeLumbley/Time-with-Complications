@@ -272,7 +272,7 @@ Private Sub DrawDisplays()
 
 
 
-### UpdateMainDisplay Method Walkthrough
+### UpdateMainDisplay Method
 
 ```vb
 Private Sub UpdateMainDisplay()
@@ -324,7 +324,7 @@ This method ensures that the user sees the current time in their preferred forma
 
 
 
-### UpdateTopDisplay Method Walkthrough
+### UpdateTopDisplay Method
 
 ```vb
 Private Sub UpdateTopDisplay()
