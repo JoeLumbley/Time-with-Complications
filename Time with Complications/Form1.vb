@@ -298,12 +298,12 @@ Public Class Form1
         If Hours = HourFormat.Twelve Then
 
             ' Formats the current time to 12-hour (Regular Time)
-            MainDisplay.Text = Now.ToLocalTime.ToShortTimeString()
+            MainDisplay.Text = Now.ToShortTimeString()
 
         Else
 
             ' Formats the current time to 24-hour (Military Time)
-            MainDisplay.Text = Now.ToLocalTime.ToString("HH:mm")
+            MainDisplay.Text = Now.ToString("HH:mm")
 
         End If
 
