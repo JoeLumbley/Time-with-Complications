@@ -109,22 +109,25 @@ Public Class Form1
 
             Case InfoType.ShortDayOfWeek
 
-                Select Case Now.DayOfWeek
-                    Case DayOfWeek.Sunday
-                        TopDisplay.Text = "Sun"
-                    Case DayOfWeek.Monday
-                        TopDisplay.Text = "Mon"
-                    Case DayOfWeek.Tuesday
-                        TopDisplay.Text = "Tue"
-                    Case DayOfWeek.Wednesday
-                        TopDisplay.Text = "Wed"
-                    Case DayOfWeek.Thursday
-                        TopDisplay.Text = "Thu"
-                    Case DayOfWeek.Friday
-                        TopDisplay.Text = "Fri"
-                    Case DayOfWeek.Saturday
-                        TopDisplay.Text = "Sat"
-                End Select
+                TopDisplay.Text = GetDayOfWeekAbbreviation(Now.DayOfWeek)
+
+
+                'Select Case Now.DayOfWeek
+                '    Case DayOfWeek.Sunday
+                '        TopDisplay.Text = "Sun"
+                '    Case DayOfWeek.Monday
+                '        TopDisplay.Text = "Mon"
+                '    Case DayOfWeek.Tuesday
+                '        TopDisplay.Text = "Tue"
+                '    Case DayOfWeek.Wednesday
+                '        TopDisplay.Text = "Wed"
+                '    Case DayOfWeek.Thursday
+                '        TopDisplay.Text = "Thu"
+                '    Case DayOfWeek.Friday
+                '        TopDisplay.Text = "Fri"
+                '    Case DayOfWeek.Saturday
+                '        TopDisplay.Text = "Sat"
+                'End Select
 
             Case InfoType.LongDate
 
@@ -188,22 +191,25 @@ Public Class Form1
 
             Case InfoType.ShortDayOfWeek
 
-                Select Case Now.DayOfWeek
-                    Case DayOfWeek.Sunday
-                        BottomDisplay.Text = "Sun"
-                    Case DayOfWeek.Monday
-                        BottomDisplay.Text = "Mon"
-                    Case DayOfWeek.Tuesday
-                        BottomDisplay.Text = "Tue"
-                    Case DayOfWeek.Wednesday
-                        BottomDisplay.Text = "Wed"
-                    Case DayOfWeek.Thursday
-                        BottomDisplay.Text = "Thu"
-                    Case DayOfWeek.Friday
-                        BottomDisplay.Text = "Fri"
-                    Case DayOfWeek.Saturday
-                        BottomDisplay.Text = "Sat"
-                End Select
+                BottomDisplay.Text = GetDayOfWeekAbbreviation(Now.DayOfWeek)
+
+
+                'Select Case Now.DayOfWeek
+                '    Case DayOfWeek.Sunday
+                '        BottomDisplay.Text = "Sun"
+                '    Case DayOfWeek.Monday
+                '        BottomDisplay.Text = "Mon"
+                '    Case DayOfWeek.Tuesday
+                '        BottomDisplay.Text = "Tue"
+                '    Case DayOfWeek.Wednesday
+                '        BottomDisplay.Text = "Wed"
+                '    Case DayOfWeek.Thursday
+                '        BottomDisplay.Text = "Thu"
+                '    Case DayOfWeek.Friday
+                '        BottomDisplay.Text = "Fri"
+                '    Case DayOfWeek.Saturday
+                '        BottomDisplay.Text = "Sat"
+                'End Select
 
             Case InfoType.LongDate
 
@@ -388,6 +394,46 @@ Public Class Form1
         Buffer = Context.Allocate(CreateGraphics(), ClientRectangle)
 
     End Sub
+
+    Private Function GetDayOfWeekAbbreviation(dayOfWeek As DayOfWeek) As String
+
+        Select Case dayOfWeek
+
+            Case DayOfWeek.Sunday
+
+                Return "Sun"
+
+            Case DayOfWeek.Monday
+
+                Return "Mon"
+
+            Case DayOfWeek.Tuesday
+
+                Return "Tue"
+
+            Case DayOfWeek.Wednesday
+
+                Return "Wed"
+
+            Case DayOfWeek.Thursday
+
+                Return "Thu"
+
+            Case DayOfWeek.Friday
+
+                Return "Fri"
+
+            Case DayOfWeek.Saturday
+
+                Return "Sat"
+
+            Case Else
+
+                Return "Unknown"
+
+        End Select
+
+    End Function
 
     Private Function GetTimeZoneCity(timeZoneId As String) As String
 
