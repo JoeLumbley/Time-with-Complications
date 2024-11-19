@@ -172,7 +172,12 @@ Private Sub Form1_Resize(sender As Object, e As EventArgs) Handles Me.Resize
 - These lines center the main display in the form.
 
 ```vb
-        ' Similar code for TopDisplay and BottomDisplay...
+            TopDisplay.Location.X = ClientSize.Width \ 2
+            TopDisplay.Location.Y = (ClientSize.Height + MenuStrip1.Height) \ 2 - ClientSize.Width \ 10
+
+            BottomDisplay.Location.X = ClientSize.Width \ 2
+            BottomDisplay.Location.Y = (ClientSize.Height + MenuStrip1.Height) \ 2 + ClientSize.Width \ 10
+
 ```
 - The same logic is applied to position the top and bottom displays.
 
