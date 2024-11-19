@@ -151,7 +151,7 @@ Public Class Form1
 
         End If
 
-        DrawFrame()
+        DrawDisplays()
 
         Buffer.Render(e.Graphics)
 
@@ -167,7 +167,7 @@ Public Class Form1
 
     End Sub
 
-    Private Sub DrawFrame()
+    Private Sub DrawDisplays()
 
         If Buffer IsNot Nothing Then
 
