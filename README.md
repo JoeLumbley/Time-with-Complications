@@ -16,7 +16,7 @@ This app allows users to switch between 12-hour and 24-hour time formats and cus
 - **Dynamic Time Display**: Shows the current time in either 12-hour or 24-hour format.
 - **Customizable Information**: Users can choose to display different types of information, including:
   - Long or short day of the week
-  - Long, medium, or short date formats
+  - Long, medium, short or military date formats
   - Current time zone and corresponding city
   - Local time
 - **Responsive Design**: The application adjusts to changes in window size, ensuring a consistent user experience.
@@ -30,6 +30,6 @@ To run the application, clone the repository and open the solution file in Visua
 
 This project is licensed under the MIT License. See the LICENSE.txt file for more details.
 
-![004](https://github.com/user-attachments/assets/6815610f-826f-4c8b-843a-0e264f401be4)
+![005](https://github.com/user-attachments/assets/1d30ce34-6e44-4bf7-b683-f49dbe438297)
 
 
