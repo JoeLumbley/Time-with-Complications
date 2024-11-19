@@ -1,5 +1,13 @@
 ﻿' Time🕒 with Complications
 
+' This application is designed to display the current time, date, and time zone
+' information in a user-friendly format. This app allows users to switch
+' between 12-hour and 24-hour time formats and customize the information
+' displayed in the window.
+'
+'
+'
+
 ' MIT License
 ' Copyright(c) 2024 Joseph W. Lumbley
 
@@ -21,8 +29,7 @@
 ' OUT OF Or IN CONNECTION WITH THE SOFTWARE Or THE USE Or OTHER DEALINGS IN THE
 ' SOFTWARE.
 
-' Monica is our an AI assistant.
-' https://monica.im/
+' https://github.com/JoeLumbley/Time-with-Complications
 
 Public Class Form1
 
@@ -722,3 +729,5 @@ Public Class Form1
 
 End Class
 
+' Monica is our an AI assistant.
+' https://monica.im/
