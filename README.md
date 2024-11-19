@@ -272,6 +272,55 @@ Private Sub DrawDisplays()
 
 
 
+### UpdateMainDisplay Method Walkthrough
+
+```vb
+Private Sub UpdateMainDisplay()
+```
+- This line defines a new method called `UpdateMainDisplay`. This method is responsible for updating the text displayed in the main display area of the application, which typically shows the current time.
+
+```vb
+    Select Case Hours
+```
+- Here, we start a `Select Case` statement to evaluate the `Hours` variable. This variable indicates whether the application is set to display time in 12-hour or 24-hour format.
+
+```vb
+    Case HourFormat.Twelve
+```
+- If `Hours` is set to `HourFormat.Twelve`, this block executes, meaning we will format the time in a 12-hour format.
+
+```vb
+        TopDisplay.Text = Now.ToShortTimeString()
+
+
+```
+- This line sets `MainDisplay.Text` to the current time formatted as hours and minutes in 12-hour format (e.g., "3:45 PM"). 
+
+```vb
+    Case HourFormat.TwentyFour
+```
+- If `Hours` is set to `HourFormat.TwentyFour`, this block executes, meaning we will format the time in a 24-hour format.
+
+```vb
+        MainDisplay.Text = Now.ToString("HH:mm")
+```
+- This line sets `MainDisplay.Text` to the current time formatted as hours and minutes in 24-hour format (e.g., "15:45").
+
+```vb
+    End Select
+End Sub
+```
+- The `End Select` statement closes the `Select Case` block, and `End Sub` marks the end of the `UpdateMainDisplay` method.
+
+
+
+The `UpdateMainDisplay` method updates the text displayed in the main section of the application based on the current time format (12-hour or 24-hour) specified by the `Hours` variable. 
+
+- If the application is in 12-hour mode, it formats the time to include AM/PM.
+- If it’s in 24-hour mode, it displays the time in a 24-hour format.
+
+This method ensures that the user sees the current time in their preferred format. 
+
 
 
 
