@@ -148,26 +148,31 @@ Public Class Form1
 
             Case InfoType.TimeZoneCity
 
-                Select Case TimeZoneInfo.Local.Id
-                    Case "Eastern Standard Time"
-                        TopDisplay.Text = "New York"
-                    Case "Central Standard Time"
-                        TopDisplay.Text = "Chicago"
-                    Case "Mountain Standard Time"
-                        TopDisplay.Text = "Denver"
-                    Case "Pacific Standard Time"
-                        TopDisplay.Text = "Los Angeles"
-                    Case "Alaskan Standard Time"
-                        TopDisplay.Text = "Anchorage"
-                    Case "Hawaiian Standard Time"
-                        TopDisplay.Text = "Honolulu"
-                    Case "Arizona Standard Time"
-                        TopDisplay.Text = "Phoenix"
-                    Case "Atlantic Standard Time"
-                        TopDisplay.Text = "San Juan"
-                    Case Else
-                        TopDisplay.Text = "Unknown"
-                End Select
+                TopDisplay.Text = GetTimeZoneCity(TimeZoneInfo.Local.Id)
+
+
+                'Select Case TimeZoneInfo.Local.Id
+                '    Case "Eastern Standard Time"
+                '        TopDisplay.Text = "New York"
+                '    Case "Central Standard Time"
+                '        TopDisplay.Text = "Chicago"
+                '    Case "Mountain Standard Time"
+                '        TopDisplay.Text = "Denver"
+                '    Case "Pacific Standard Time"
+                '        TopDisplay.Text = "Los Angeles"
+                '    Case "Alaskan Standard Time"
+                '        TopDisplay.Text = "Anchorage"
+                '    Case "Hawaiian Standard Time"
+                '        TopDisplay.Text = "Honolulu"
+                '    Case "Arizona Standard Time"
+                '        TopDisplay.Text = "Phoenix"
+                '    Case "Atlantic Standard Time"
+                '        TopDisplay.Text = "San Juan"
+                '    Case Else
+                '        TopDisplay.Text = "Unknown"
+                'End Select
+
+
 
             Case InfoType.LocalTime
 
@@ -222,26 +227,29 @@ Public Class Form1
 
             Case InfoType.TimeZoneCity
 
-                Select Case TimeZoneInfo.Local.Id
-                    Case "Eastern Standard Time"
-                        BottomDisplay.Text = "New York"
-                    Case "Central Standard Time"
-                        BottomDisplay.Text = "Chicago"
-                    Case "Mountain Standard Time"
-                        BottomDisplay.Text = "Denver"
-                    Case "Pacific Standard Time"
-                        BottomDisplay.Text = "Los Angeles"
-                    Case "Alaskan Standard Time"
-                        BottomDisplay.Text = "Anchorage"
-                    Case "Hawaiian Standard Time"
-                        BottomDisplay.Text = "Honolulu"
-                    Case "Arizona Standard Time"
-                        BottomDisplay.Text = "Phoenix"
-                    Case "Atlantic Standard Time"
-                        BottomDisplay.Text = "San Juan"
-                    Case Else
-                        BottomDisplay.Text = "Unknown"
-                End Select
+                BottomDisplay.Text = GetTimeZoneCity(TimeZoneInfo.Local.Id)
+
+
+                'Select Case TimeZoneInfo.Local.Id
+                '    Case "Eastern Standard Time"
+                '        BottomDisplay.Text = "New York"
+                '    Case "Central Standard Time"
+                '        BottomDisplay.Text = "Chicago"
+                '    Case "Mountain Standard Time"
+                '        BottomDisplay.Text = "Denver"
+                '    Case "Pacific Standard Time"
+                '        BottomDisplay.Text = "Los Angeles"
+                '    Case "Alaskan Standard Time"
+                '        BottomDisplay.Text = "Anchorage"
+                '    Case "Hawaiian Standard Time"
+                '        BottomDisplay.Text = "Honolulu"
+                '    Case "Arizona Standard Time"
+                '        BottomDisplay.Text = "Phoenix"
+                '    Case "Atlantic Standard Time"
+                '        BottomDisplay.Text = "San Juan"
+                '    Case Else
+                '        BottomDisplay.Text = "Unknown"
+                'End Select
 
             Case InfoType.LocalTime
 
@@ -380,6 +388,50 @@ Public Class Form1
         Buffer = Context.Allocate(CreateGraphics(), ClientRectangle)
 
     End Sub
+
+    Private Function GetTimeZoneCity(timeZoneId As String) As String
+
+        Select Case timeZoneId
+
+            Case "Eastern Standard Time"
+
+                Return "New York"
+
+            Case "Central Standard Time"
+
+                Return "Chicago"
+
+            Case "Mountain Standard Time"
+
+                Return "Denver"
+
+            Case "Pacific Standard Time"
+
+                Return "Los Angeles"
+
+            Case "Alaskan Standard Time"
+
+                Return "Anchorage"
+
+            Case "Hawaiian Standard Time"
+
+                Return "Honolulu"
+
+            Case "Arizona Standard Time"
+
+                Return "Phoenix"
+
+            Case "Atlantic Standard Time"
+
+                Return "San Juan"
+
+            Case Else
+
+                Return "Unknown"
+
+        End Select
+
+    End Function
 
     Private Sub TwentyFourHourMenuItem_Click(sender As Object, e As EventArgs) Handles TwentyFourHourMenuItem.Click
 
