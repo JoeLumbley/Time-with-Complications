@@ -172,11 +172,11 @@ Private Sub Form1_Resize(sender As Object, e As EventArgs) Handles Me.Resize
 - These lines center the main display in the form.
 
 ```vb
-            TopDisplay.Location.X = ClientSize.Width \ 2
-            TopDisplay.Location.Y = (ClientSize.Height + MenuStrip1.Height) \ 2 - ClientSize.Width \ 10
+  TopDisplay.Location.X = ClientSize.Width \ 2
+  TopDisplay.Location.Y = (ClientSize.Height + MenuStrip1.Height) \ 2 - ClientSize.Width \ 10
 
-            BottomDisplay.Location.X = ClientSize.Width \ 2
-            BottomDisplay.Location.Y = (ClientSize.Height + MenuStrip1.Height) \ 2 + ClientSize.Width \ 10
+  BottomDisplay.Location.X = ClientSize.Width \ 2
+  BottomDisplay.Location.Y = (ClientSize.Height + MenuStrip1.Height) \ 2 + ClientSize.Width \ 10
 
 ```
 - The same logic is applied to position the top and bottom displays.
@@ -425,7 +425,7 @@ End Sub
 ```
 - Depending on the type of information, it sets the text to the current day of the week, date, time zone, etc.
 
-### Conclusion
+
 
 This code creates a simple time display application that updates in real-time. It uses Windows Forms and VB.NET to manage graphics and handle user interactions. Each part of the code is designed to ensure that the display updates smoothly and provides relevant information to the user. 
 
