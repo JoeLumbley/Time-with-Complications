@@ -558,21 +558,6 @@ Public Class Form1
 
     End Sub
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     Private Sub BottomDayMenuItem_Click(sender As Object, e As EventArgs) Handles BottomDayMenuItem.Click
 
         If Not BottomDisplay.Type = InfoType.LongDayOfWeek Then BottomDisplay.Type = InfoType.LongDayOfWeek
@@ -734,11 +719,6 @@ Public Class Form1
         If BottomLocalTimeMenuItem.Checked Then BottomLocalTimeMenuItem.Checked = False
 
     End Sub
-
-
-
-
-
 
 End Class
 
