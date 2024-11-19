@@ -157,6 +157,15 @@ Public Class Form1
 
     End Sub
 
+    Private Sub UpdateDisplays()
+
+        UpdateMainDisplay()
+
+        UpdateTopDisplay()
+
+        UpdateBottomDisplay()
+
+    End Sub
 
     Private Sub DrawFrame()
 
@@ -193,16 +202,6 @@ Public Class Form1
             Debug.Print("Buffer is not initialized.")
 
         End If
-
-    End Sub
-
-    Private Sub UpdateDisplays()
-
-        UpdateMainDisplay()
-
-        UpdateTopDisplay()
-
-        UpdateBottomDisplay()
 
     End Sub
 
