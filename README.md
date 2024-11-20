@@ -44,9 +44,6 @@ Built with smooth graphics and real-time updates, this app ensures you stay info
 
 To run the application, clone the repository and open the solution file in Visual Studio. Build and run the project to start using the application.
 
-## License
-
-This project is licensed under the MIT License. See the LICENSE.txt file for more details.
 
 
 
@@ -449,6 +446,9 @@ This code creates a simple time display application that updates in real-time. I
 
 
 
+## License
+
+This project is licensed under the MIT License. See the LICENSE.txt file for more details.
 
 
 
