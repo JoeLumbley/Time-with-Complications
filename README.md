@@ -443,6 +443,69 @@ The `UpdateTopDisplay` method dynamically updates the text displayed in the top 
 
 
 
+
+
+
+###  **TwentyFourHourMenuItem_Click Event**
+This subroutine is triggered when the user clicks on the "24-Hour" menu item.
+
+```vb
+Private Sub TwentyFourHourMenuItem_Click(sender As Object, e As EventArgs) Handles TwentyFourHourMenuItem.Click
+```
+
+- **Check Current Format**:
+  ```vb
+  If Not Hours = HourFormat.TwentyFour Then Hours = HourFormat.TwentyFour
+  ```
+  - This line checks if the current time format (`Hours`) is not set to 24-hour format (`HourFormat.TwentyFour`). If it isn't, it updates `Hours` to `HourFormat.TwentyFour`.
+
+- **Check the Menu Item**:
+  ```vb
+  If Not TwentyFourHourMenuItem.Checked Then TwentyFourHourMenuItem.Checked = True
+  ```
+  - This line ensures that the "24-Hour" menu item is marked as checked.
+
+- **Uncheck the Other Option**:
+  ```vb
+  If TwelveHourMenuItem.Checked Then TwelveHourMenuItem.Checked = False
+  ```
+  - If the "12-Hour" menu item is currently checked, this line unchecks it, ensuring that only one option is selected at a time.
+
+###  **TwelveHourMenuItem_Click Event**
+This subroutine is triggered when the user clicks on the "12-Hour" menu item.
+
+```vb
+Private Sub TwelveHourMenuItem_Click(sender As Object, e As EventArgs) Handles TwelveHourMenuItem.Click
+```
+
+- **Check Current Format**:
+  ```vb
+  If Not Hours = HourFormat.Twelve Then Hours = HourFormat.Twelve
+  ```
+  - Similar to the previous subroutine, this checks if the current time format is not set to 12-hour format. If it isn't, it updates `Hours` to `HourFormat.Twelve`.
+
+- **Check the Menu Item**:
+  ```vb
+  If Not TwelveHourMenuItem.Checked Then TwelveHourMenuItem.Checked = True
+  ```
+  - This ensures that the "12-Hour" menu item is marked as checked.
+
+- **Uncheck the Other Option**:
+  ```vb
+  If TwentyFourHourMenuItem.Checked Then TwentyFourHourMenuItem.Checked = False
+  ```
+  - If the "24-Hour" menu item is currently checked, this line unchecks it, ensuring only one option is selected.
+
+- Both event handlers allow the user to toggle between 12-hour and 24-hour time formats.
+- They ensure that only one format can be selected at a time by checking and unchecking the respective menu items.
+- The `Hours` variable is updated accordingly to reflect the user's choice, which will affect how the time is displayed in the application.
+
+
+
+
+
+
+
 This code creates a simple time display application that updates in real-time. It uses Windows Forms and VB.NET to manage graphics and handle user interactions. Each part of the code is designed to ensure that the display updates smoothly and provides relevant information to the user. 
 
 
