@@ -333,7 +333,6 @@ Public Class Form1
 ```vb
         MainDisplay.Text = Now.ToShortTimeString()
 
-
 ```
 - This line sets `MainDisplay.Text` to the current time formatted as hours and minutes in 12-hour format (e.g., "3:45 PM"). 
 
@@ -349,6 +348,7 @@ Public Class Form1
 
 ```vb
     End Select
+
 End Sub
 ```
 - The `End Select` statement closes the `Select Case` block, and `End Sub` marks the end of the `UpdateMainDisplay` method.
