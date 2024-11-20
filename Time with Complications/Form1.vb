@@ -79,7 +79,7 @@ Public Class Form1
 
         BottomDisplay.Type = InfoType.MedDate
 
-        Timer1.Interval = 20
+        Timer1.Interval = 15
 
         Timer1.Enabled = True
 
@@ -92,7 +92,7 @@ Public Class Form1
         If Not WindowState = FormWindowState.Minimized Then
 
             ' Set the font size for the main display based on the width of the client rectangle
-            Dim FontSize As Integer = ClientSize.Width \ 14
+            Dim FontSize As Single = ClientSize.Width / 14
             MainDisplay.Font = New Font("Segoe UI", FontSize, FontStyle.Regular)
 
             ' Center the main display in the client rectangle.
@@ -100,15 +100,13 @@ Public Class Form1
             MainDisplay.Location.Y = (ClientSize.Height + MenuStrip1.Height) \ 2
 
             ' Set the font size for the top and bottom display based on the width of the client rectangle
-            FontSize = ClientSize.Width \ 41
+            FontSize = ClientSize.Width / 41
             TopDisplay.Font = New Font("Segoe UI", FontSize, FontStyle.Regular)
+            BottomDisplay.Font = New Font("Segoe UI", FontSize, FontStyle.Regular)
 
             ' Center the top display in the client rectangle above the main display.
             TopDisplay.Location.X = ClientSize.Width \ 2
             TopDisplay.Location.Y = (ClientSize.Height + MenuStrip1.Height) \ 2 - ClientSize.Width \ 10
-
-            ' Set the font size for the bottom display based on the width of the client rectangle
-            BottomDisplay.Font = New Font("Segoe UI", FontSize, FontStyle.Regular)
 
             ' Center the bottom display in the client rectangle below the main display.
             BottomDisplay.Location.X = ClientSize.Width \ 2
@@ -121,9 +119,9 @@ Public Class Form1
 
                 Buffer = Nothing ' Set to Nothing to avoid using a disposed object
 
-            End If
+                ' The buffer will be reallocated in OnPaint
 
-            ' The buffer will be reallocated in OnPaint
+            End If
 
         End If
 
