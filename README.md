@@ -302,10 +302,19 @@ Public Class Form1
 
 ```vb
                 .DrawString(MainDisplay.Text, MainDisplay.Font, Brushes.White, MainDisplay.Location, AlineCenterMiddle)
+
                 .DrawString(TopDisplay.Text, TopDisplay.Font, Brushes.LightGray, TopDisplay.Location, AlineCenterMiddle)
+
                 .DrawString(BottomDisplay.Text, BottomDisplay.Font, Brushes.LightGray, BottomDisplay.Location, AlineCenterMiddle)
 ```
 - This draws the main, top, and bottom display texts using their respective fonts and colors.
+
+
+
+
+
+
+![010](https://github.com/user-attachments/assets/57ea2f05-9b87-482d-ba4d-a413902747a6)
 
 
 
