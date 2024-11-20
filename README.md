@@ -74,6 +74,7 @@ Public Class Form1
 
 ```vb
   Private Context As BufferedGraphicsContext
+
   Private Buffer As BufferedGraphics
 ```
 - Here, we declare two private variables: `Context` to manage graphics rendering and `Buffer` to hold the graphics that will be drawn on the screen.
