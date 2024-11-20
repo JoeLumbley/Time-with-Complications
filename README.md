@@ -42,7 +42,9 @@ Built with smooth graphics and real-time updates, this app ensures you stay info
 
 ## Getting Started
 
-To run the application, clone the repository and open the solution file in Visual Studio. Build and run the project to start using the application.
+To run the application, clone the repository and open the solution file in Visual Studio. 
+
+Build and run the project to start using the application.
 
 
 
