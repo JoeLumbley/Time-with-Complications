@@ -8,13 +8,17 @@ Display the current time, date, and time zone information in both 12-hour and 24
 
 Customize what you see, from the day of the week to military date formats, all while enjoying a responsive design that adapts to your window size. 
 
+
+![007](https://github.com/user-attachments/assets/3d57c658-e7fd-422c-8adf-c5ab14407781)
+
+
+
 Built with smooth graphics and real-time updates, this app ensures you stay informed and stylishly organized. Perfect for anyone looking to enhance their workspace with functional aesthetics!
 
 
 
 
 
-![007](https://github.com/user-attachments/assets/3d57c658-e7fd-422c-8adf-c5ab14407781)
 
 
 
@@ -30,6 +34,12 @@ Built with smooth graphics and real-time updates, this app ensures you stay info
 - **Responsive Design**: The application adjusts to changes in window size, ensuring a consistent user experience.
 - **Buffered Graphics**: Utilizes buffered graphics for smooth rendering and improved performance.
 
+
+
+![008](https://github.com/user-attachments/assets/8ead4d3b-ec3c-4778-8df2-e94a13070409)
+
+
+
 ## Getting Started
 
 To run the application, clone the repository and open the solution file in Visual Studio. Build and run the project to start using the application.
@@ -41,7 +51,6 @@ This project is licensed under the MIT License. See the LICENSE.txt file for mor
 
 
 
-![008](https://github.com/user-attachments/assets/8ead4d3b-ec3c-4778-8df2-e94a13070409)
 
 
 
