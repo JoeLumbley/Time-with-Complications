@@ -291,6 +291,7 @@ Public Class Form1
             With Buffer.Graphics
 
                 .Clear(Color.Black) ' Clear the buffer with a black background
+
                 .CompositingMode = Drawing2D.CompositingMode.SourceOver
                 .TextRenderingHint = Drawing.Text.TextRenderingHint.AntiAlias
                 .SmoothingMode = Drawing2D.SmoothingMode.HighQuality
