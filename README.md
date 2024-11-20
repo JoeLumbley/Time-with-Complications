@@ -1,11 +1,23 @@
 # Time🕒 with Complications
 
-This application is designed to display the current time, date, and time zone information in a user-friendly format.
+**Make Your Screen a Clock 🕒 / Calendar 📅**
 
-This app allows users to switch between 12-hour and 24-hour time formats and customize the information displayed in the window.
+Transform your desktop into a dynamic clock and calendar with this user-friendly application! 
+
+Display the current time, date, and time zone information in both 12-hour and 24-hour formats. 
+
+Customize what you see, from the day of the week to military date formats, all while enjoying a responsive design that adapts to your window size. 
 
 
-![006](https://github.com/user-attachments/assets/9ece40f3-2d46-46c3-9212-289367262d4f)
+![007](https://github.com/user-attachments/assets/3d57c658-e7fd-422c-8adf-c5ab14407781)
+
+
+
+Built with smooth graphics and real-time updates, this app ensures you stay informed and stylishly organized. Perfect for anyone looking to enhance their workspace with functional aesthetics!
+
+
+
+
 
 
 
@@ -22,15 +34,17 @@ This app allows users to switch between 12-hour and 24-hour time formats and cus
 - **Responsive Design**: The application adjusts to changes in window size, ensuring a consistent user experience.
 - **Buffered Graphics**: Utilizes buffered graphics for smooth rendering and improved performance.
 
+
+
+![008](https://github.com/user-attachments/assets/8ead4d3b-ec3c-4778-8df2-e94a13070409)
+
+
+
 ## Getting Started
 
-To run the application, clone the repository and open the solution file in Visual Studio. Build and run the project to start using the application.
+To run the application, clone the repository and open the solution file in Visual Studio. 
 
-## License
-
-This project is licensed under the MIT License. See the LICENSE.txt file for more details.
-
-![005](https://github.com/user-attachments/assets/1d30ce34-6e44-4bf7-b683-f49dbe438297)
+Build and run the project to start using the application.
 
 
 
@@ -49,7 +63,9 @@ This project is licensed under the MIT License. See the LICENSE.txt file for mor
 
 
 
-### Code Walkthrough
+
+
+## Code Walkthrough
 
 ```vb
 Public Class Form1
@@ -57,26 +73,27 @@ Public Class Form1
 - This line defines a new class called `Form1`, which represents the main window of the application.
 
 ```vb
-Private Context As BufferedGraphicsContext
-Private Buffer As BufferedGraphics
+  Private Context As BufferedGraphicsContext
+
+  Private Buffer As BufferedGraphics
 ```
 - Here, we declare two private variables: `Context` to manage graphics rendering and `Buffer` to hold the graphics that will be drawn on the screen.
 
 ```vb
-Private Enum HourFormat
+  Private Enum HourFormat
     Twelve
     TwentyFour
-End Enum
+  End Enum
 ```
 - This creates an enumeration named `HourFormat` with two possible values: `Twelve` for 12-hour time and `TwentyFour` for 24-hour time.
 
 ```vb
-Private Hours As HourFormat = HourFormat.Twelve
+  Private Hours As HourFormat = HourFormat.Twelve
 ```
 - This line initializes a variable `Hours` to `HourFormat.Twelve`, meaning the app will start in 12-hour format.
 
 ```vb
-Private Enum InfoType
+  Private Enum InfoType
     Time
     LongDayOfWeek
     ShortDayOfWeek
@@ -87,53 +104,58 @@ Private Enum InfoType
     TimeZoneCity
     LocalTime
     MilitaryDate
-End Enum
+  End Enum
 ```
 - This defines another enumeration called `InfoType`, which lists different types of information that can be displayed (like time, date, and time zone).
 
 ```vb
-Private Structure DisplayObject
+  Private Structure DisplayObject
     Public Location As Point
     Public Text As String
     Public Font As Font
     Public Type As InfoType
-End Structure
+  End Structure
 ```
 - This creates a structure named `DisplayObject` that holds information about what to display on the screen. It includes the location of the text, the text itself, the font used, and the type of information.
 
 ```vb
-Private MainDisplay As DisplayObject
-Private TopDisplay As DisplayObject
-Private BottomDisplay As DisplayObject
+  Private MainDisplay As DisplayObject
+
+  Private TopDisplay As DisplayObject
+
+  Private BottomDisplay As DisplayObject
 ```
 - These lines declare three instances of `DisplayObject` for the main display (time), top display (day/date), and bottom display (additional info).
 
 ```vb
-Private ReadOnly AlineCenterMiddle As New StringFormat With {.Alignment = StringAlignment.Center, .LineAlignment = StringAlignment.Center}
+  Private ReadOnly AlineCenterMiddle As New StringFormat With {.Alignment = StringAlignment.Center, .LineAlignment = StringAlignment.Center}
 ```
 - This creates a `StringFormat` object that centers text both horizontally and vertically.
 
 ### Form Load Event
 
 ```vb
-Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+  Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 ```
 - This is an event handler that runs when the form is loaded.
 
 ```vb
     InitializeForm()
+
     InitializeBuffer()
 ```
 - These calls initialize the form's settings and the graphics buffer.
 
 ```vb
     TopDisplay.Type = InfoType.LongDayOfWeek
+
     BottomDisplay.Type = InfoType.MedDate
 ```
 - Here, we set the types of information to display in the top and bottom displays.
 
 ```vb
     Timer1.Interval = 20
+
     Timer1.Enabled = True
 ```
 - This sets a timer to update the displays every 20 milliseconds and enables it.
@@ -146,7 +168,7 @@ Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 ### Form Resize Event
 
 ```vb
-Private Sub Form1_Resize(sender As Object, e As EventArgs) Handles Me.Resize
+  Private Sub Form1_Resize(sender As Object, e As EventArgs) Handles Me.Resize
 ```
 - This event handler runs when the form is resized.
 
@@ -156,43 +178,49 @@ Private Sub Form1_Resize(sender As Object, e As EventArgs) Handles Me.Resize
 - This checks if the window is not minimized.
 
 ```vb
-        Dim FontSize As Integer = ClientSize.Width \ 14
+      Dim FontSize As Integer = ClientSize.Width \ 14
 ```
 - This calculates the font size based on the width of the form.
 
 ```vb
-        MainDisplay.Font = New Font("Segoe UI", FontSize, FontStyle.Regular)
+      MainDisplay.Font = New Font("Segoe UI", FontSize, FontStyle.Regular)
 ```
 - This sets the font for the main display using the calculated size.
 
 ```vb
-        MainDisplay.Location.X = ClientSize.Width \ 2
-        MainDisplay.Location.Y = (ClientSize.Height + MenuStrip1.Height) \ 2
+      MainDisplay.Location.X = ClientSize.Width \ 2
+
+      MainDisplay.Location.Y = (ClientSize.Height + MenuStrip1.Height) \ 2
 ```
 - These lines center the main display in the form.
 
 ```vb
-            TopDisplay.Location.X = ClientSize.Width \ 2
-            TopDisplay.Location.Y = (ClientSize.Height + MenuStrip1.Height) \ 2 - ClientSize.Width \ 10
+      TopDisplay.Location.X = ClientSize.Width \ 2
 
-            BottomDisplay.Location.X = ClientSize.Width \ 2
-            BottomDisplay.Location.Y = (ClientSize.Height + MenuStrip1.Height) \ 2 + ClientSize.Width \ 10
+      TopDisplay.Location.Y = (ClientSize.Height + MenuStrip1.Height) \ 2 - ClientSize.Width \ 10
+
+      BottomDisplay.Location.X = ClientSize.Width \ 2
+
+      BottomDisplay.Location.Y = (ClientSize.Height + MenuStrip1.Height) \ 2 + ClientSize.Width \ 10
 
 ```
 - The same logic is applied to position the top and bottom displays.
 
 ```vb
-        If Buffer IsNot Nothing Then
-            Buffer.Dispose()
-            Buffer = Nothing
-        End If
+      If Buffer IsNot Nothing Then
+
+        Buffer.Dispose()
+
+        Buffer = Nothing
+
+      End If
 ```
 - This checks if the buffer exists and disposes of it to free up resources.
 
 ### Timer Tick Event
 
 ```vb
-Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles Timer1.Tick
+  Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles Timer1.Tick
 ```
 - This event runs every time the timer ticks.
 
@@ -203,7 +231,9 @@ Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles Timer1.Tick
 
 ```vb
     If Not WindowState = FormWindowState.Minimized Then
-        Refresh() ' Calls OnPaint Sub
+
+      Refresh() ' Calls OnPaint Sub
+
     End If
 ```
 - If the window is not minimized, it refreshes the display to show updated information.
@@ -211,19 +241,22 @@ Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles Timer1.Tick
 ### OnPaint Event
 
 ```vb
-Protected Overrides Sub OnPaint(ByVal e As PaintEventArgs)
+  Protected Overrides Sub OnPaint(ByVal e As PaintEventArgs)
 ```
 - This is where the drawing happens. It overrides the default paint behavior.
 
 ```vb
     If Buffer Is Nothing Then
-        Buffer = Context.Allocate(e.Graphics, ClientRectangle)
+
+      Buffer = Context.Allocate(e.Graphics, ClientRectangle)
+
     End If
 ```
 - If the buffer does not exist, it allocates a new one.
 
 ```vb
     DrawDisplays()
+
     Buffer.Render(e.Graphics)
 ```
 - Calls a method to draw the displays and then renders the buffer onto the screen.
@@ -231,26 +264,34 @@ Protected Overrides Sub OnPaint(ByVal e As PaintEventArgs)
 ### Update Displays Method
 
 ```vb
-Private Sub UpdateDisplays()
+  Private Sub UpdateDisplays()
+
     UpdateMainDisplay()
+
     UpdateTopDisplay()
+
     UpdateBottomDisplay()
-End Sub
+
+  End Sub
 ```
 - This method updates all the display areas by calling their respective update methods.
 
 ### Draw Displays Method
 
 ```vb
-Private Sub DrawDisplays()
+  Private Sub DrawDisplays()
 ```
 - This method handles the actual drawing of the text on the screen.
 
 ```vb
     If Buffer IsNot Nothing Then
+
         Try
+
             With Buffer.Graphics
+
                 .Clear(Color.Black) ' Clear the buffer with a black background
+
                 .CompositingMode = Drawing2D.CompositingMode.SourceOver
                 .TextRenderingHint = Drawing.Text.TextRenderingHint.AntiAlias
                 .SmoothingMode = Drawing2D.SmoothingMode.HighQuality
@@ -261,10 +302,19 @@ Private Sub DrawDisplays()
 
 ```vb
                 .DrawString(MainDisplay.Text, MainDisplay.Font, Brushes.White, MainDisplay.Location, AlineCenterMiddle)
+
                 .DrawString(TopDisplay.Text, TopDisplay.Font, Brushes.LightGray, TopDisplay.Location, AlineCenterMiddle)
+
                 .DrawString(BottomDisplay.Text, BottomDisplay.Font, Brushes.LightGray, BottomDisplay.Location, AlineCenterMiddle)
 ```
 - This draws the main, top, and bottom display texts using their respective fonts and colors.
+
+
+
+
+
+
+![010](https://github.com/user-attachments/assets/57ea2f05-9b87-482d-ba4d-a413902747a6)
 
 
 
@@ -275,7 +325,7 @@ Private Sub DrawDisplays()
 ### UpdateMainDisplay Method
 
 ```vb
-Private Sub UpdateMainDisplay()
+  Private Sub UpdateMainDisplay()
 ```
 - This line defines a new method called `UpdateMainDisplay`. This method is responsible for updating the text displayed in the main display area of the application, which typically shows the current time.
 
@@ -285,19 +335,18 @@ Private Sub UpdateMainDisplay()
 - Here, we start a `Select Case` statement to evaluate the `Hours` variable. This variable indicates whether the application is set to display time in 12-hour or 24-hour format.
 
 ```vb
-    Case HourFormat.Twelve
+      Case HourFormat.Twelve
 ```
 - If `Hours` is set to `HourFormat.Twelve`, this block executes, meaning we will format the time in a 12-hour format.
 
 ```vb
-        TopDisplay.Text = Now.ToShortTimeString()
-
+        MainDisplay.Text = Now.ToShortTimeString()
 
 ```
 - This line sets `MainDisplay.Text` to the current time formatted as hours and minutes in 12-hour format (e.g., "3:45 PM"). 
 
 ```vb
-    Case HourFormat.TwentyFour
+      Case HourFormat.TwentyFour
 ```
 - If `Hours` is set to `HourFormat.TwentyFour`, this block executes, meaning we will format the time in a 24-hour format.
 
@@ -308,6 +357,7 @@ Private Sub UpdateMainDisplay()
 
 ```vb
     End Select
+
 End Sub
 ```
 - The `End Select` statement closes the `Select Case` block, and `End Sub` marks the end of the `UpdateMainDisplay` method.
@@ -327,7 +377,7 @@ This method ensures that the user sees the current time in their preferred forma
 ### UpdateTopDisplay Method
 
 ```vb
-Private Sub UpdateTopDisplay()
+  Private Sub UpdateTopDisplay()
 ```
 - This line defines a new method called `UpdateTopDisplay`. This method is responsible for updating the text displayed in the top display area of the application.
 
@@ -337,62 +387,72 @@ Private Sub UpdateTopDisplay()
 - Here, we start a `Select Case` statement. This allows us to evaluate the `TopDisplay.Type` to determine what kind of information we need to show in the top display.
 
 ```vb
-    Case InfoType.LongDayOfWeek
+      Case InfoType.LongDayOfWeek
+
         TopDisplay.Text = Now.DayOfWeek.ToString
 ```
 - If `TopDisplay.Type` is `InfoType.LongDayOfWeek`, this line sets `TopDisplay.Text` to the full name of the current day of the week (e.g., "Monday"). `Now.DayOfWeek` gets the current day, and `ToString` converts it to a readable format.
 
 ```vb
-    Case InfoType.ShortDayOfWeek
+      Case InfoType.ShortDayOfWeek
+
         TopDisplay.Text = GetDayOfWeekAbbreviation(Now.DayOfWeek)
 ```
 - If `TopDisplay.Type` is `InfoType.ShortDayOfWeek`, this line calls the `GetDayOfWeekAbbreviation` function, passing the current day of the week. This function returns a three-letter abbreviation (e.g., "Mon" for Monday).
 
 ```vb
-    Case InfoType.LongDate
+      Case InfoType.LongDate
+
         TopDisplay.Text = Now.ToLongDateString
 ```
 - If `TopDisplay.Type` is `InfoType.LongDate`, this line sets `TopDisplay.Text` to the long date format (e.g., "Monday, November 19, 2024") using `Now.ToLongDateString`.
 
 ```vb
-    Case InfoType.MedDate
+      Case InfoType.MedDate
+
         TopDisplay.Text = Now.ToString("MMMM d, yyyy")
 ```
 - If `TopDisplay.Type` is `InfoType.MedDate`, this line formats the date in a medium style (e.g., "November 19, 2024") and assigns it to `TopDisplay.Text`.
 
 ```vb
-    Case InfoType.ShortDate
+      Case InfoType.ShortDate
+
         TopDisplay.Text = Now.ToShortDateString
 ```
 - If `TopDisplay.Type` is `InfoType.ShortDate`, this line sets `TopDisplay.Text` to a short date format (e.g., "11/19/2024").
 
 ```vb
-    Case InfoType.MilitaryDate
+      Case InfoType.MilitaryDate
+
         TopDisplay.Text = Now.ToString("ddMMMyy").ToUpper()
 ```
 - If `TopDisplay.Type` is `InfoType.MilitaryDate`, this formats the date in a military style (e.g., "19NOV24") and converts it to uppercase.
 
 ```vb
-    Case InfoType.TimeZone
+      Case InfoType.TimeZone
+
         TopDisplay.Text = TimeZoneInfo.Local.Id
 ```
 - If `TopDisplay.Type` is `InfoType.TimeZone`, this line sets `TopDisplay.Text` to the ID of the local time zone (e.g., "Pacific Standard Time").
 
 ```vb
-    Case InfoType.TimeZoneCity
+      Case InfoType.TimeZoneCity
+
         TopDisplay.Text = GetTimeZoneCity(TimeZoneInfo.Local.Id)
 ```
 - If `TopDisplay.Type` is `InfoType.TimeZoneCity`, this line calls the `GetTimeZoneCity` function, passing the local time zone ID. This function returns the name of a city associated with that time zone (e.g., "Los Angeles" for Pacific Standard Time).
 
 ```vb
-    Case InfoType.LocalTime
+      Case InfoType.LocalTime
+
         TopDisplay.Text = "Local Time"
 ```
 - If `TopDisplay.Type` is `InfoType.LocalTime`, this line simply sets `TopDisplay.Text` to the string "Local Time".
 
 ```vb
     End Select
-End Sub
+
+  End Sub
 ```
 - The `End Select` statement closes the `Select Case` block, and `End Sub` marks the end of the `UpdateTopDisplay` method.
 
@@ -411,27 +471,99 @@ The `UpdateTopDisplay` method dynamically updates the text displayed in the top 
 ### Update Bottom Display Method
 
 ```vb
-Private Sub UpdateBottomDisplay()
+  Private Sub UpdateBottomDisplay()
+
     Select Case BottomDisplay.Type
 ```
 - This method updates the text for the bottom display based on its type.
 
 ```vb
-    Case InfoType.LongDayOfWeek
+      Case InfoType.LongDayOfWeek
+
         BottomDisplay.Text = Now.DayOfWeek.ToString
+
     ' Other cases for different types...
+
     End Select
-End Sub
+
+  End Sub
 ```
 - Depending on the type of information, it sets the text to the current day of the week, date, time zone, etc.
 
-### Conclusion
+
+
+
+
+
+###  **TwentyFourHourMenuItem_Click Event**
+This subroutine is triggered when the user clicks on the "24-Hour" menu item.
+
+```vb
+Private Sub TwentyFourHourMenuItem_Click(sender As Object, e As EventArgs) Handles TwentyFourHourMenuItem.Click
+```
+
+- **Check Current Format**:
+  ```vb
+  If Not Hours = HourFormat.TwentyFour Then Hours = HourFormat.TwentyFour
+  ```
+  - This line checks if the current time format (`Hours`) is not set to 24-hour format (`HourFormat.TwentyFour`). If it isn't, it updates `Hours` to `HourFormat.TwentyFour`.
+
+- **Check the Menu Item**:
+  ```vb
+  If Not TwentyFourHourMenuItem.Checked Then TwentyFourHourMenuItem.Checked = True
+  ```
+  - This line ensures that the "24-Hour" menu item is marked as checked.
+
+- **Uncheck the Other Option**:
+  ```vb
+  If TwelveHourMenuItem.Checked Then TwelveHourMenuItem.Checked = False
+  ```
+  - If the "12-Hour" menu item is currently checked, this line unchecks it, ensuring that only one option is selected at a time.
+
+###  **TwelveHourMenuItem_Click Event**
+This subroutine is triggered when the user clicks on the "12-Hour" menu item.
+
+```vb
+Private Sub TwelveHourMenuItem_Click(sender As Object, e As EventArgs) Handles TwelveHourMenuItem.Click
+```
+
+- **Check Current Format**:
+  ```vb
+  If Not Hours = HourFormat.Twelve Then Hours = HourFormat.Twelve
+  ```
+  - Similar to the previous subroutine, this checks if the current time format is not set to 12-hour format. If it isn't, it updates `Hours` to `HourFormat.Twelve`.
+
+- **Check the Menu Item**:
+  ```vb
+  If Not TwelveHourMenuItem.Checked Then TwelveHourMenuItem.Checked = True
+  ```
+  - This ensures that the "12-Hour" menu item is marked as checked.
+
+- **Uncheck the Other Option**:
+  ```vb
+  If TwentyFourHourMenuItem.Checked Then TwentyFourHourMenuItem.Checked = False
+  ```
+  - If the "24-Hour" menu item is currently checked, this line unchecks it, ensuring only one option is selected.
+
+- Both event handlers allow the user to toggle between 12-hour and 24-hour time formats.
+- They ensure that only one format can be selected at a time by checking and unchecking the respective menu items.
+- The `Hours` variable is updated accordingly to reflect the user's choice, which will affect how the time is displayed in the application.
+
+
+
+![009](https://github.com/user-attachments/assets/bdfd477e-ac70-4298-aa49-0e4d7c661137)
+
+
+
 
 This code creates a simple time display application that updates in real-time. It uses Windows Forms and VB.NET to manage graphics and handle user interactions. Each part of the code is designed to ensure that the display updates smoothly and provides relevant information to the user. 
 
 
 
 
+## License
+
+This project is licensed under the MIT License. See the LICENSE.txt file for more details.
 
 
 
