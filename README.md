@@ -1,6 +1,6 @@
 # Time🕒 with Complications
 
-**Make Your Screen a Clock🕒/Calendar📅**
+**Make Your Screen a Clock🕒 / Calendar📅**
 
 Transform your desktop into a dynamic clock and calendar with this user-friendly application! 
 
