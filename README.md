@@ -120,7 +120,9 @@ Public Class Form1
 
 ```vb
   Private MainDisplay As DisplayObject
+
   Private TopDisplay As DisplayObject
+
   Private BottomDisplay As DisplayObject
 ```
 - These lines declare three instances of `DisplayObject` for the main display (time), top display (day/date), and bottom display (additional info).
@@ -139,18 +141,21 @@ Public Class Form1
 
 ```vb
     InitializeForm()
+
     InitializeBuffer()
 ```
 - These calls initialize the form's settings and the graphics buffer.
 
 ```vb
     TopDisplay.Type = InfoType.LongDayOfWeek
+
     BottomDisplay.Type = InfoType.MedDate
 ```
 - Here, we set the types of information to display in the top and bottom displays.
 
 ```vb
     Timer1.Interval = 20
+
     Timer1.Enabled = True
 ```
 - This sets a timer to update the displays every 20 milliseconds and enables it.
@@ -184,15 +189,18 @@ Public Class Form1
 
 ```vb
       MainDisplay.Location.X = ClientSize.Width \ 2
+
       MainDisplay.Location.Y = (ClientSize.Height + MenuStrip1.Height) \ 2
 ```
 - These lines center the main display in the form.
 
 ```vb
       TopDisplay.Location.X = ClientSize.Width \ 2
+
       TopDisplay.Location.Y = (ClientSize.Height + MenuStrip1.Height) \ 2 - ClientSize.Width \ 10
 
       BottomDisplay.Location.X = ClientSize.Width \ 2
+
       BottomDisplay.Location.Y = (ClientSize.Height + MenuStrip1.Height) \ 2 + ClientSize.Width \ 10
 
 ```
@@ -200,8 +208,11 @@ Public Class Form1
 
 ```vb
       If Buffer IsNot Nothing Then
+
         Buffer.Dispose()
+
         Buffer = Nothing
+
       End If
 ```
 - This checks if the buffer exists and disposes of it to free up resources.
@@ -220,7 +231,9 @@ Public Class Form1
 
 ```vb
     If Not WindowState = FormWindowState.Minimized Then
+
       Refresh() ' Calls OnPaint Sub
+
     End If
 ```
 - If the window is not minimized, it refreshes the display to show updated information.
@@ -234,13 +247,16 @@ Public Class Form1
 
 ```vb
     If Buffer Is Nothing Then
+
       Buffer = Context.Allocate(e.Graphics, ClientRectangle)
+
     End If
 ```
 - If the buffer does not exist, it allocates a new one.
 
 ```vb
     DrawDisplays()
+
     Buffer.Render(e.Graphics)
 ```
 - Calls a method to draw the displays and then renders the buffer onto the screen.
@@ -249,9 +265,13 @@ Public Class Form1
 
 ```vb
   Private Sub UpdateDisplays()
+
     UpdateMainDisplay()
+
     UpdateTopDisplay()
+
     UpdateBottomDisplay()
+
   End Sub
 ```
 - This method updates all the display areas by calling their respective update methods.
@@ -265,8 +285,11 @@ Public Class Form1
 
 ```vb
     If Buffer IsNot Nothing Then
+
         Try
+
             With Buffer.Graphics
+
                 .Clear(Color.Black) ' Clear the buffer with a black background
                 .CompositingMode = Drawing2D.CompositingMode.SourceOver
                 .TextRenderingHint = Drawing.Text.TextRenderingHint.AntiAlias
@@ -355,60 +378,70 @@ This method ensures that the user sees the current time in their preferred forma
 
 ```vb
       Case InfoType.LongDayOfWeek
+
         TopDisplay.Text = Now.DayOfWeek.ToString
 ```
 - If `TopDisplay.Type` is `InfoType.LongDayOfWeek`, this line sets `TopDisplay.Text` to the full name of the current day of the week (e.g., "Monday"). `Now.DayOfWeek` gets the current day, and `ToString` converts it to a readable format.
 
 ```vb
       Case InfoType.ShortDayOfWeek
+
         TopDisplay.Text = GetDayOfWeekAbbreviation(Now.DayOfWeek)
 ```
 - If `TopDisplay.Type` is `InfoType.ShortDayOfWeek`, this line calls the `GetDayOfWeekAbbreviation` function, passing the current day of the week. This function returns a three-letter abbreviation (e.g., "Mon" for Monday).
 
 ```vb
       Case InfoType.LongDate
+
         TopDisplay.Text = Now.ToLongDateString
 ```
 - If `TopDisplay.Type` is `InfoType.LongDate`, this line sets `TopDisplay.Text` to the long date format (e.g., "Monday, November 19, 2024") using `Now.ToLongDateString`.
 
 ```vb
       Case InfoType.MedDate
+
         TopDisplay.Text = Now.ToString("MMMM d, yyyy")
 ```
 - If `TopDisplay.Type` is `InfoType.MedDate`, this line formats the date in a medium style (e.g., "November 19, 2024") and assigns it to `TopDisplay.Text`.
 
 ```vb
       Case InfoType.ShortDate
+
         TopDisplay.Text = Now.ToShortDateString
 ```
 - If `TopDisplay.Type` is `InfoType.ShortDate`, this line sets `TopDisplay.Text` to a short date format (e.g., "11/19/2024").
 
 ```vb
       Case InfoType.MilitaryDate
+
         TopDisplay.Text = Now.ToString("ddMMMyy").ToUpper()
 ```
 - If `TopDisplay.Type` is `InfoType.MilitaryDate`, this formats the date in a military style (e.g., "19NOV24") and converts it to uppercase.
 
 ```vb
       Case InfoType.TimeZone
+
         TopDisplay.Text = TimeZoneInfo.Local.Id
 ```
 - If `TopDisplay.Type` is `InfoType.TimeZone`, this line sets `TopDisplay.Text` to the ID of the local time zone (e.g., "Pacific Standard Time").
 
 ```vb
       Case InfoType.TimeZoneCity
+
         TopDisplay.Text = GetTimeZoneCity(TimeZoneInfo.Local.Id)
 ```
 - If `TopDisplay.Type` is `InfoType.TimeZoneCity`, this line calls the `GetTimeZoneCity` function, passing the local time zone ID. This function returns the name of a city associated with that time zone (e.g., "Los Angeles" for Pacific Standard Time).
 
 ```vb
       Case InfoType.LocalTime
+
         TopDisplay.Text = "Local Time"
 ```
 - If `TopDisplay.Type` is `InfoType.LocalTime`, this line simply sets `TopDisplay.Text` to the string "Local Time".
 
 ```vb
     End Select
+
   End Sub
 ```
 - The `End Select` statement closes the `Select Case` block, and `End Sub` marks the end of the `UpdateTopDisplay` method.
@@ -429,15 +462,20 @@ The `UpdateTopDisplay` method dynamically updates the text displayed in the top 
 
 ```vb
   Private Sub UpdateBottomDisplay()
+
     Select Case BottomDisplay.Type
 ```
 - This method updates the text for the bottom display based on its type.
 
 ```vb
       Case InfoType.LongDayOfWeek
+
         BottomDisplay.Text = Now.DayOfWeek.ToString
+
     ' Other cases for different types...
+
     End Select
+
   End Sub
 ```
 - Depending on the type of information, it sets the text to the current day of the week, date, time zone, etc.
