@@ -5,8 +5,8 @@ This application is designed to display the current time, date, and time zone in
 This app allows users to switch between 12-hour and 24-hour time formats and customize the information displayed in the window.
 
 
-![006](https://github.com/user-attachments/assets/9ece40f3-2d46-46c3-9212-289367262d4f)
 
+![007](https://github.com/user-attachments/assets/3d57c658-e7fd-422c-8adf-c5ab14407781)
 
 
 
@@ -30,10 +30,10 @@ To run the application, clone the repository and open the solution file in Visua
 
 This project is licensed under the MIT License. See the LICENSE.txt file for more details.
 
-![005](https://github.com/user-attachments/assets/1d30ce34-6e44-4bf7-b683-f49dbe438297)
 
 
 
+![008](https://github.com/user-attachments/assets/8ead4d3b-ec3c-4778-8df2-e94a13070409)
 
 
 
