@@ -99,7 +99,7 @@ Public Class Form1
             MainDisplay.Location.X = ClientSize.Width \ 2
             MainDisplay.Location.Y = (ClientSize.Height + MenuStrip1.Height) \ 2
 
-            ' Set the font size for the top display based on the width of the client rectangle
+            ' Set the font size for the top and bottom display based on the width of the client rectangle
             FontSize = ClientSize.Width \ 41
             TopDisplay.Font = New Font("Segoe UI", FontSize, FontStyle.Regular)
 
@@ -108,7 +108,6 @@ Public Class Form1
             TopDisplay.Location.Y = (ClientSize.Height + MenuStrip1.Height) \ 2 - ClientSize.Width \ 10
 
             ' Set the font size for the bottom display based on the width of the client rectangle
-            'FontSize = ClientSize.Width \ 39
             BottomDisplay.Font = New Font("Segoe UI", FontSize, FontStyle.Regular)
 
             ' Center the bottom display in the client rectangle below the main display.
