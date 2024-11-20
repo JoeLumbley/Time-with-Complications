@@ -96,8 +96,8 @@ Public Class Form1
             MainDisplay.Font = New Font("Segoe UI", FontSize, FontStyle.Regular)
 
             ' Center the main display in the client rectangle.
-            MainDisplay.Location.X = ClientSize.Width \ 2
-            MainDisplay.Location.Y = (ClientSize.Height + MenuStrip1.Height) \ 2
+            MainDisplay.Location.X = ClientSize.Width / 2
+            MainDisplay.Location.Y = (ClientSize.Height + MenuStrip1.Height) / 2
 
             ' Set the font size for the top and bottom display based on the width of the client rectangle
             FontSize = ClientSize.Width / 41
@@ -105,12 +105,12 @@ Public Class Form1
             BottomDisplay.Font = New Font("Segoe UI", FontSize, FontStyle.Regular)
 
             ' Center the top display in the client rectangle above the main display.
-            TopDisplay.Location.X = ClientSize.Width \ 2
-            TopDisplay.Location.Y = (ClientSize.Height + MenuStrip1.Height) \ 2 - ClientSize.Width \ 10
+            TopDisplay.Location.X = ClientSize.Width / 2
+            TopDisplay.Location.Y = (ClientSize.Height + MenuStrip1.Height) / 2 - ClientSize.Width / 10
 
             ' Center the bottom display in the client rectangle below the main display.
-            BottomDisplay.Location.X = ClientSize.Width \ 2
-            BottomDisplay.Location.Y = (ClientSize.Height + MenuStrip1.Height) \ 2 + ClientSize.Width \ 10
+            BottomDisplay.Location.X = ClientSize.Width / 2
+            BottomDisplay.Location.Y = (ClientSize.Height + MenuStrip1.Height) / 2 + ClientSize.Width / 10
 
             ' Dispose of the existing buffer
             If Buffer IsNot Nothing Then
