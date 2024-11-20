@@ -1,6 +1,7 @@
 # Time🕒 with Complications
 
-**Make Your Screen a Clock/Calendar**
+**Make Your Screen a Clock🕒/Calendar📅**
+
 Transform your desktop into a dynamic clock and calendar with this user-friendly application! 
 
 Display the current time, date, and time zone information in both 12-hour and 24-hour formats. 
