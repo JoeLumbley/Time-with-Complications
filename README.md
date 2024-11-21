@@ -334,7 +334,7 @@ Public Class Form1
 ```vb
   Private Sub UpdateMainDisplay()
 ```
-- This line defines a new method called `UpdateMainDisplay`. This method is responsible for updating the text displayed in the main display area of the application, which typically shows the current time.
+- This line defines a new method called `UpdateMainDisplay`. This method is responsible for updating the text displayed in the main display area of the application, which shows the current time.
 
 ```vb
     Select Case Hours
