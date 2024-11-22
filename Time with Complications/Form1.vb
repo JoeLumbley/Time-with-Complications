@@ -146,6 +146,16 @@ Public Class Form1
 
             Buffer = Context.Allocate(e.Graphics, ClientRectangle)
 
+            With Buffer.Graphics
+
+                .CompositingMode = Drawing2D.CompositingMode.SourceOver
+                .TextRenderingHint = Drawing.Text.TextRenderingHint.AntiAlias
+                .SmoothingMode = Drawing2D.SmoothingMode.HighQuality
+                .PixelOffsetMode = Drawing2D.PixelOffsetMode.None
+                .CompositingQuality = Drawing2D.CompositingQuality.HighQuality
+
+            End With
+
         End If
 
         DrawDisplays()
@@ -173,12 +183,6 @@ Public Class Form1
                 With Buffer.Graphics
 
                     .Clear(Color.Black)
-
-                    .CompositingMode = Drawing2D.CompositingMode.SourceOver
-                    .TextRenderingHint = Drawing.Text.TextRenderingHint.AntiAlias
-                    .SmoothingMode = Drawing2D.SmoothingMode.HighQuality
-                    .PixelOffsetMode = Drawing2D.PixelOffsetMode.None
-                    .CompositingQuality = Drawing2D.CompositingQuality.HighQuality
 
                     .DrawString(MainDisplay.Text, MainDisplay.Font, Brushes.White, MainDisplay.Location, AlineCenterMiddle)
 
@@ -331,6 +335,16 @@ Public Class Form1
 
         ' Allocate the buffer initially using the current client rectangle
         Buffer = Context.Allocate(CreateGraphics(), ClientRectangle)
+
+        With Buffer.Graphics
+
+            .CompositingMode = Drawing2D.CompositingMode.SourceOver
+            .TextRenderingHint = Drawing.Text.TextRenderingHint.AntiAlias
+            .SmoothingMode = Drawing2D.SmoothingMode.HighQuality
+            .PixelOffsetMode = Drawing2D.PixelOffsetMode.None
+            .CompositingQuality = Drawing2D.CompositingQuality.HighQuality
+
+        End With
 
     End Sub
 
