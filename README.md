@@ -217,6 +217,13 @@ Public Class Form1
 ```
 - This checks if the buffer exists and disposes of it to free up resources.
 
+
+
+![011](https://github.com/user-attachments/assets/e3331b02-f99f-48a1-99e7-ac39c254a9a6)
+
+
+
+
 ### Timer Tick Event
 
 ```vb
@@ -327,7 +334,7 @@ Public Class Form1
 ```vb
   Private Sub UpdateMainDisplay()
 ```
-- This line defines a new method called `UpdateMainDisplay`. This method is responsible for updating the text displayed in the main display area of the application, which typically shows the current time.
+- This line defines a new method called `UpdateMainDisplay`. This method is responsible for updating the text displayed in the main display area of the application, which shows the current time.
 
 ```vb
     Select Case Hours
