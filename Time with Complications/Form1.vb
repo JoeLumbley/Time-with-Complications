@@ -4,9 +4,6 @@
 ' information in a user-friendly format. This app allows users to switch
 ' between 12-hour and 24-hour time formats and customize the information
 ' displayed in the window.
-'
-'
-'
 
 ' MIT License
 ' Copyright(c) 2024 Joseph W. Lumbley
