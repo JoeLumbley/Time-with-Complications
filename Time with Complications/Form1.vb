@@ -138,6 +138,16 @@ Public Class Form1
 
     Protected Overrides Sub OnPaint(ByVal e As PaintEventArgs)
 
+        AllocateBuffer(e)
+
+        DrawDisplays()
+
+        Buffer.Render(e.Graphics)
+
+    End Sub
+
+    Private Sub AllocateBuffer(e As PaintEventArgs)
+
         ' Allocate the buffer if it hasn't been allocated yet
         If Buffer Is Nothing Then
 
@@ -154,10 +164,6 @@ Public Class Form1
             End With
 
         End If
-
-        DrawDisplays()
-
-        Buffer.Render(e.Graphics)
 
     End Sub
 
