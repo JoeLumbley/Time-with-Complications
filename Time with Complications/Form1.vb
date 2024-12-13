@@ -115,20 +115,6 @@ Public Class Form1
 
     End Sub
 
-    Private Sub DisposeBuffer()
-
-        If Buffer IsNot Nothing Then
-
-            Buffer.Dispose()
-
-            Buffer = Nothing ' Set to Nothing to avoid using a disposed object
-
-            ' The buffer will be reallocated in OnPaint
-
-        End If
-
-    End Sub
-
     Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles Timer1.Tick
 
         UpdateDisplays()
@@ -148,27 +134,6 @@ Public Class Form1
         DrawDisplays()
 
         Buffer.Render(e.Graphics)
-
-    End Sub
-
-    Private Sub AllocateBuffer(e As PaintEventArgs)
-
-        ' Allocate the buffer if it hasn't been allocated yet
-        If Buffer Is Nothing Then
-
-            Buffer = Context.Allocate(e.Graphics, ClientRectangle)
-
-            With Buffer.Graphics
-
-                .CompositingMode = Drawing2D.CompositingMode.SourceOver
-                .TextRenderingHint = Drawing.Text.TextRenderingHint.AntiAlias
-                .SmoothingMode = Drawing2D.SmoothingMode.HighQuality
-                .PixelOffsetMode = Drawing2D.PixelOffsetMode.None
-                .CompositingQuality = Drawing2D.CompositingQuality.HighQuality
-
-            End With
-
-        End If
 
     End Sub
 
@@ -214,47 +179,19 @@ Public Class Form1
 
     End Sub
 
-    Private Sub UpdateBottomDisplay()
+    Private Sub UpdateMainDisplay()
 
-        Select Case BottomDisplay.Type
+        If Hours = HourFormat.Twelve Then
 
-            Case InfoType.LongDayOfWeek
+            ' Formats the current time to 12-hour (Regular Time)
+            MainDisplay.Text = Now.ToShortTimeString()
 
-                BottomDisplay.Text = Now.DayOfWeek.ToString
+        Else
 
-            Case InfoType.ShortDayOfWeek
+            ' Formats the current time to 24-hour (Military Time)
+            MainDisplay.Text = Now.ToString("HH:mm")
 
-                BottomDisplay.Text = GetDayOfWeekAbbreviation(Now.DayOfWeek)
-
-            Case InfoType.LongDate
-
-                BottomDisplay.Text = Now.ToLongDateString
-
-            Case InfoType.MedDate
-
-                BottomDisplay.Text = Now.ToString("MMMM d, yyyy")
-
-            Case InfoType.ShortDate
-
-                BottomDisplay.Text = Now.ToShortDateString
-
-            Case InfoType.MilitaryDate
-
-                BottomDisplay.Text = Now.ToString("ddMMMyy").ToUpper()
-
-            Case InfoType.TimeZone
-
-                BottomDisplay.Text = TimeZoneInfo.Local.Id
-
-            Case InfoType.TimeZoneCity
-
-                BottomDisplay.Text = GetTimeZoneCity(TimeZoneInfo.Local.Id)
-
-            Case InfoType.LocalTime
-
-                BottomDisplay.Text = "Local Time"
-
-        End Select
+        End If
 
     End Sub
 
@@ -302,59 +239,55 @@ Public Class Form1
 
     End Sub
 
-    Private Sub UpdateMainDisplay()
 
-        If Hours = HourFormat.Twelve Then
 
-            ' Formats the current time to 12-hour (Regular Time)
-            MainDisplay.Text = Now.ToShortTimeString()
+    Private Sub UpdateBottomDisplay()
 
-        Else
+        Select Case BottomDisplay.Type
 
-            ' Formats the current time to 24-hour (Military Time)
-            MainDisplay.Text = Now.ToString("HH:mm")
+            Case InfoType.LongDayOfWeek
 
-        End If
+                BottomDisplay.Text = Now.DayOfWeek.ToString
 
-    End Sub
+            Case InfoType.ShortDayOfWeek
 
-    Private Sub InitializeForm()
+                BottomDisplay.Text = GetDayOfWeekAbbreviation(Now.DayOfWeek)
 
-        CenterToScreen()
+            Case InfoType.LongDate
 
-        SetStyle(ControlStyles.UserPaint, True)
+                BottomDisplay.Text = Now.ToLongDateString
 
-        SetStyle(ControlStyles.OptimizedDoubleBuffer, True)
+            Case InfoType.MedDate
 
-        SetStyle(ControlStyles.AllPaintingInWmPaint, True)
+                BottomDisplay.Text = Now.ToString("MMMM d, yyyy")
 
-        Text = "Time🕒 with Complications - Code with Joe"
+            Case InfoType.ShortDate
 
-        Me.WindowState = FormWindowState.Maximized
+                BottomDisplay.Text = Now.ToShortDateString
 
-    End Sub
+            Case InfoType.MilitaryDate
 
-    Private Sub InitializeBuffer()
+                BottomDisplay.Text = Now.ToString("ddMMMyy").ToUpper()
 
-        ' Set context to the context of this app.
-        Context = BufferedGraphicsManager.Current
+            Case InfoType.TimeZone
 
-        Context.MaximumBuffer = Screen.PrimaryScreen.WorkingArea.Size
+                BottomDisplay.Text = TimeZoneInfo.Local.Id
 
-        ' Allocate the buffer initially using the current client rectangle
-        Buffer = Context.Allocate(CreateGraphics(), ClientRectangle)
+            Case InfoType.TimeZoneCity
 
-        With Buffer.Graphics
+                BottomDisplay.Text = GetTimeZoneCity(TimeZoneInfo.Local.Id)
 
-            .CompositingMode = Drawing2D.CompositingMode.SourceOver
-            .TextRenderingHint = Drawing.Text.TextRenderingHint.AntiAlias
-            .SmoothingMode = Drawing2D.SmoothingMode.HighQuality
-            .PixelOffsetMode = Drawing2D.PixelOffsetMode.None
-            .CompositingQuality = Drawing2D.CompositingQuality.HighQuality
+            Case InfoType.LocalTime
 
-        End With
+                BottomDisplay.Text = "Local Time"
+
+        End Select
 
     End Sub
+
+
+
+
 
     Private Function GetDayOfWeekAbbreviation(dayOfWeek As DayOfWeek) As String
 
@@ -783,6 +716,79 @@ Public Class Form1
         If BottomTimeZoneMenuItem.Checked Then BottomTimeZoneMenuItem.Checked = False
         If BottomTimeZoneCityMenuItem.Checked Then BottomTimeZoneCityMenuItem.Checked = False
         If BottomLocalTimeMenuItem.Checked Then BottomLocalTimeMenuItem.Checked = False
+
+    End Sub
+
+    Private Sub InitializeForm()
+
+        CenterToScreen()
+
+        SetStyle(ControlStyles.UserPaint, True)
+
+        SetStyle(ControlStyles.OptimizedDoubleBuffer, True)
+
+        SetStyle(ControlStyles.AllPaintingInWmPaint, True)
+
+        Text = "Time🕒 with Complications - Code with Joe"
+
+        Me.WindowState = FormWindowState.Maximized
+
+    End Sub
+
+    Private Sub InitializeBuffer()
+
+        ' Set context to the context of this app.
+        Context = BufferedGraphicsManager.Current
+
+        Context.MaximumBuffer = Screen.PrimaryScreen.WorkingArea.Size
+
+        ' Allocate the buffer initially using the current client rectangle
+        Buffer = Context.Allocate(CreateGraphics(), ClientRectangle)
+
+        With Buffer.Graphics
+
+            .CompositingMode = Drawing2D.CompositingMode.SourceOver
+            .TextRenderingHint = Drawing.Text.TextRenderingHint.AntiAlias
+            .SmoothingMode = Drawing2D.SmoothingMode.HighQuality
+            .PixelOffsetMode = Drawing2D.PixelOffsetMode.None
+            .CompositingQuality = Drawing2D.CompositingQuality.HighQuality
+
+        End With
+
+    End Sub
+
+    Private Sub AllocateBuffer(e As PaintEventArgs)
+
+        ' Allocate the buffer if it hasn't been allocated yet
+        If Buffer Is Nothing Then
+
+            Buffer = Context.Allocate(e.Graphics, ClientRectangle)
+
+            With Buffer.Graphics
+
+                .CompositingMode = Drawing2D.CompositingMode.SourceOver
+                .TextRenderingHint = Drawing.Text.TextRenderingHint.AntiAlias
+                .SmoothingMode = Drawing2D.SmoothingMode.HighQuality
+                .PixelOffsetMode = Drawing2D.PixelOffsetMode.None
+                .CompositingQuality = Drawing2D.CompositingQuality.HighQuality
+
+            End With
+
+        End If
+
+    End Sub
+
+    Private Sub DisposeBuffer()
+
+        If Buffer IsNot Nothing Then
+
+            Buffer.Dispose()
+
+            Buffer = Nothing ' Set to Nothing to avoid using a disposed object
+
+            ' The buffer will be reallocated in OnPaint
+
+        End If
 
     End Sub
 
