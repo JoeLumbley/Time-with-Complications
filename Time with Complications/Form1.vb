@@ -109,16 +109,21 @@ Public Class Form1
             BottomDisplay.Location.X = ClientSize.Width / 2
             BottomDisplay.Location.Y = (ClientSize.Height + MenuStrip1.Height) / 2 + ClientSize.Width / 10
 
-            ' Dispose of the existing buffer
-            If Buffer IsNot Nothing Then
+            DisposeBuffer()
 
-                Buffer.Dispose()
+        End If
 
-                Buffer = Nothing ' Set to Nothing to avoid using a disposed object
+    End Sub
 
-                ' The buffer will be reallocated in OnPaint
+    Private Sub DisposeBuffer()
 
-            End If
+        If Buffer IsNot Nothing Then
+
+            Buffer.Dispose()
+
+            Buffer = Nothing ' Set to Nothing to avoid using a disposed object
+
+            ' The buffer will be reallocated in OnPaint
 
         End If
 
